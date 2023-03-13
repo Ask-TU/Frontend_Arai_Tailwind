@@ -21,7 +21,7 @@ const index = () => {
     return (
         <main className='bg-18191B w-screen h-screen'>
             <div className='flex h-screen'>
-                <form className="m-auto w-2/6">
+                <form className="m-auto md:w-2/6">
                     <div gap={5} className='stack'>
                         <h1 className="text-center text-FF7171 text-2xl md:text-4xl mb-10 font-medium">Sign in</h1>
                         <p className="text-center text-white mb-2 font-medium md:text-lg text-sm">
@@ -44,13 +44,13 @@ const index = () => {
                         <label for="remember" className="ml-2 md:text-lg text-sm font-medium text-white dark:text-white">Remember me</label>
                         <label className="ml-4 md:text-lg text-sm font-medium text-828282 dark:text-828282"><a href='/register'>Forgot Password?</a></label>
                     </div>
-                    <div className='flex justify-between'>
-                        <Link  href='/register'>
+                    <div className='flex justify-center'>
+                        <Link  href='/register' className='mr-6'>
                            <button type="submit" className="text-black bg-white hover:bg-gray-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-white dark:hover:bg-gray-300">Register</button> 
                         </Link>   
                         <button 
                             type="submit" 
-                            className="text-white bg-08D9D6 hover:bg-12A6A4 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-08D9D6 dark:hover:bg-12A6A4"
+                            className="text-white bg-08D9D6 hover:bg-12A6A4 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-08D9D6 dark:hover:bg-12A6A4 ml-6"
                             disabled={isLoading}
                             onClick={!isLoading ? handleClick : null}
                         >{isLoading ? 'Loading…' : 'Login'}</button>       
