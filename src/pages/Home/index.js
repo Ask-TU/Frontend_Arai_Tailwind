@@ -9,22 +9,17 @@ const index = () => {
     <>
       <Header />
 
-      <div className="mt-5 h-screen xl:grid grid-cols-5">
-        <div className="col-span-1 max-xl:hidden">
+      <div className="mt-10 h-screen">
+        <div className="max-xl:hidden">
           <Navbar />
         </div>
 
-        <div className="col-span-5 xl:col-span-4">
+        <div>
           <div className="m-auto max-w-2xl">
             <Search />
-            <Blockpost>
-            </Blockpost>
-            <Blockpost>
-            </Blockpost>
-            <Blockpost>
-            </Blockpost>
-              
-
+            <Blockpost></Blockpost>
+            <Blockpost></Blockpost>
+            <Blockpost></Blockpost>
           </div>
         </div>
       </div>

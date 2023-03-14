@@ -17,24 +17,30 @@ const Blockpost = () => {
   };
 
   return (
-    <div className="bg-242527 flex flex-col w-full h-fit my-5 rounded-md text-white pb-3">
-      <div className="flex">
-        <div className="m-3 h-10">
-          <Image src={ProfileImg} alt="" width={46.59} height={45.6}></Image>
+    <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4">
+      <div className="flex items-center">
+        <Image src={ProfileImg} alt="" width={40} height={40}></Image>
+        <text className="mx-5">{username}</text>
+        <text className="text-ACACAC text-sm">{dateTime}</text>
+      </div>
+
+      <div className="ml-16">
+        <div className="mb-3">
+          <text className="text-FF4E4E font-bold text-xl">
+            Q:{" "}
+            <span className="text-white font-bold text-xl">
+              {titleQuestion}
+            </span>
+          </text>
         </div>
-        <text className="mt-5 h-10">{username}</text>
-        <text className="mt-5 ml-4 h-10 text-ACACAC">{dateTime}</text>
-        <button className="text-4xl text-white ml-72 h-1" onClick={handleIconClick}>
+
+        <div className="bg-FF4E4E w-fit p-1 rounded-md text-xs">{classTag}</div>
+      </div>
+
+      <div className="absolute top-0 right-8">
+        <button className="text-2xl" onClick={() => handleIconClick()}>
           <BsFillBookmarkFill color={iconColor} />
         </button>
-      </div>
-      <div className=" ml-16">
-        <text className="text-FF4E4E font-bold text-xl">Q: </text>
-        <text className="font-bold text-xl">{titleQuestion}</text>
-
-        <div className="justify-center bg-FF4E4E w-fit p-1 rounded text-black mt-3">
-          {classTag}
-        </div>
       </div>
     </div>
   );
