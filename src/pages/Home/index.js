@@ -17,9 +17,9 @@ const index = () => {
         <div>
           <div className="m-auto max-w-2xl">
             <Search />
-            <Blockpost></Blockpost>
-            <Blockpost></Blockpost>
-            <Blockpost></Blockpost>
+            <Blockpost />
+            <Blockpost />
+            <Blockpost />
           </div>
         </div>
       </div>
