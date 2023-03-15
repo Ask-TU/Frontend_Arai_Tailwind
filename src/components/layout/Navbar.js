@@ -1,6 +1,7 @@
 import React from "react";
 import { FaHome, FaUserCircle } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { HiFilter } from "react-icons/hi";
 
 const Navbar = () => {
   return (
@@ -29,4 +30,12 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const ToggleNav = () => {
+  return (
+    <button className="rounded-lg bg-3D3D3D text-white ml-3 px-4">
+      <HiFilter />
+    </button>
+  );
+};
+
+export { Navbar, ToggleNav };

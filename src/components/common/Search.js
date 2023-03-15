@@ -1,5 +1,4 @@
 import React from "react";
-import { HiFilter } from "react-icons/hi";
 
 const Search = () => {
   return (
@@ -14,10 +13,6 @@ const Search = () => {
         type="text"
         name="search"
       />
-
-      <button className="rounded-lg bg-3D3D3D text-white ml-3 px-4">
-        <HiFilter />
-      </button>
     </label>
   );
 };
