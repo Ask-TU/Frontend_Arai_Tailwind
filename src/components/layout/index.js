@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       <div className="mt-10 max-xl:hidden">
         <Navbar />
       </div>
-      <main className="w-screen h-screen">{children}</main>
+      <main className="w-full h-screen">{children}</main>
       <Footer />
     </>
   );
