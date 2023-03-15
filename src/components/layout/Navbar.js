@@ -21,10 +21,13 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div className="flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
-        <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
-        <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
-        <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
+      <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
+        <p className="absolute top-3 left-5 text-sm">Class</p>
+        <div className="mt-5 flex flex-col">
+          <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
+          <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
+          <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
+        </div>
       </div>
     </nav>
   );
