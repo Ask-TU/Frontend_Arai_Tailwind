@@ -1,6 +1,6 @@
 import Search from "@/components/common/Search";
 import Layout from "@/components/layout";
-import Blockpost from "@/components/common/blockpost";
+import ResultBlock from "@/components/result/resultblock";
 import { ToggleNav } from "@/components/layout/Navbar";
 import CreatePost from "@/components/home-page/createPost";
 import React from "react";
@@ -14,13 +14,11 @@ const index = () => {
             <Search />
             <ToggleNav />
           </div>
-          <div className="border-b border-636363 pb-5">
-            <CreatePost />
-          </div>
+
           <div className="pt-5">
-            <Blockpost />
-            <Blockpost />
-            <Blockpost />
+            <ResultBlock />
+            <ResultBlock />
+            <ResultBlock />
           </div>
         </div>
       </div>

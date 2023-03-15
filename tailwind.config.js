@@ -26,7 +26,9 @@ module.exports = {
         "18191B" : '#18191B',
         "000000" : '#000000',
         "636363" : '#636363',
-        "BFBFBF" : '#BFBFBF'
+        "BFBFBF" : '#BFBFBF',
+        "3A3B3D" : '#3A3B3D',
+        "AEC64E" : '#AEC64E'
       }
     },
   },
