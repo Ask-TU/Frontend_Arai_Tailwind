@@ -1,29 +1,8 @@
-import React, { useState } from "react";
 import Image from "next/image";
-import logo from "../../../public/assets/ARAI.png";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
-import { BsFillBellFill, BsPersonCircle } from "react-icons/bs";
-import { RiQuestionnaireFill } from "react-icons/ri";
+import React, { useState } from "react";
 
-const Header = () => {
-  return (
-    <div className="z-10 flex justify-between border-b border-black bg-242527 p-4 sticky top-0">
-      <div className="mx-5">
-        <Image src={logo} alt="" width={98} height={45} />
-      </div>
-      <div className="mx-2">
-        <button className="text-2xl text-white mx-3">
-          <BsFillBellFill />
-        </button>
-        <button className="text-2xl text-white mx-3">
-          <BsPersonCircle />
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const Footer = () => {
+const CreatePost = () => {
   const [isOpen, setIsOpen] = useState(false);
   const Openmodal = () => {
     setIsOpen(true);
@@ -34,12 +13,22 @@ const Footer = () => {
   };
 
   return (
-    <div>
+    <div className="bg-242527 flex items-center rounded-lg px-4 h-36 my-5">
+      <Image src={ProfileImg} alt="Profile icon" width={40} height={40} />
       <button
-        className="rounded-lg bg-08D9D6 text-white px-3 py-2 text-4xl fixed bottom-10 right-10"
+        className="
+      flex 
+      justify-start 
+      bg-3D3D3D 
+      text-white 
+      text-sm 
+      rounded-full 
+      py-2 px-5 mx-4 
+      w-full 
+      hover:bg-828282"
         onClick={() => Openmodal()}
       >
-        <RiQuestionnaireFill />
+        Have any question?
       </button>
 
       {isOpen && (
@@ -114,4 +103,4 @@ const Footer = () => {
   );
 };
 
-export { Header, Footer };
+export default CreatePost;
