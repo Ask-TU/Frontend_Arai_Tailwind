@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="m-8 max-xl:hidden">
+      <div className="mt-8 max-xl:hidden">
         <Navbar />
       </div>
       <main className="w-full h-full">{children}</main>

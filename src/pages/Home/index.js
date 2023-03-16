@@ -8,7 +8,7 @@ import React from "react";
 const index = () => {
   return (
     <Layout>
-      <div className="m-8 overflow-hidden">
+      <div className="m-8">
         <div className="m-auto max-w-xl lg:max-w-2xl">
           <div className="flex">
             <Search />
