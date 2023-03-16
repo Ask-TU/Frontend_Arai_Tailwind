@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
 
-
 const ResultBlock = () => {
   const [iconColor, setIconColor] = useState("white");
 
@@ -12,7 +11,6 @@ const ResultBlock = () => {
   const [des, setDes] = useState(
     "Software Configuration Management and Maintenance (Wed 12:30)"
   );
-
 
   return (
     <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4">
@@ -24,11 +22,21 @@ const ResultBlock = () => {
 
       <div className="ml-14">
         <div className="flex">
-          <text className="text-FF4E4E font-bold text-xl mr-4 ">{className}</text>
-          <div className="bg-3A3B3D w-fit p-1 pr-10 rounded-md text-sm h-fit">{sec}</div>
+          <text className="text-FF4E4E font-bold text-xl mr-4 ">
+            {className}
+          </text>
+          <div className="bg-3A3B3D w-fit p-1 pr-10 rounded-md text-sm h-fit">
+            {sec}
+          </div>
         </div>
-        <text className="text-sm mr-10">{des}</text>
-        <button className="bg-AEC64E rounded-md py-1 px-3">Join Class</button>
+        <text className="text-sm">{des}</text>
+        <button
+          className="
+        absolute bottom-3 right-4
+        bg-AEC64E rounded-md py-1 px-3"
+        >
+          Join Class
+        </button>
       </div>
     </div>
   );
