@@ -52,45 +52,9 @@ const ToggleNav = () => {
         <RxHamburgerMenu />
       </button>
 
-      {isOpen && (
-        <div className="fixed z-50 inset-0 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="fixed inset-0 bg-272727 bg-opacity-75 backdrop-blur">
-              <nav className="fixed top-24 left-5">
-                <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
-                  <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
-                    <FaHome />
-                    <p className="ml-2">Home</p>
-                  </button>
-                  <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
-                    <FaUserCircle />
-                    <p className="ml-2">My question</p>
-                  </button>
-                  <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
-                    <BsFillBookmarkFill />
-                    <p className="ml-2">Book</p>
-                  </button>
-                </div>
-
-                <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
-                  <p className="absolute top-3 left-5 text-sm">Class</p>
-                  <div className="mt-6 flex flex-col">
-                    <button className="p-2 rounded-lg hover:bg-08D9D6">
-                      SF340
-                    </button>
-                    <button className="p-2 rounded-lg hover:bg-08D9D6">
-                      SF340
-                    </button>
-                    <button className="p-2 rounded-lg hover:bg-08D9D6">
-                      SF340
-                    </button>
-                  </div>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* {isOpen && (
+        // dropdown //
+      )} */}
     </div>
   );
 };

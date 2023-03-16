@@ -19,7 +19,10 @@ const Blockpost = () => {
   };
 
   return (
-    <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4 overflow-hidden">
+    <div
+      className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4 overflow-hidden
+    hover:cursor-pointer"
+    >
       <div className="flex items-center">
         <Image src={ProfileImg} alt="" width={40} height={40}></Image>
         <div className="max-lg:flex flex-col">
