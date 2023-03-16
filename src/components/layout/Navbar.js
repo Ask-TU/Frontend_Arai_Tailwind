@@ -1,7 +1,7 @@
 import React from "react";
 import { FaHome, FaUserCircle } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
-import { HiFilter } from "react-icons/hi";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
   return (
@@ -36,7 +36,7 @@ const Navbar = () => {
 const ToggleNav = () => {
   return (
     <button className="rounded-lg bg-3D3D3D text-white ml-3 px-4">
-      <HiFilter />
+      <RxHamburgerMenu />
     </button>
   );
 };

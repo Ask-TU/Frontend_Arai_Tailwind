@@ -34,9 +34,9 @@ const Footer = () => {
   };
 
   return (
-    <div>
+    <div className="max-md:hidden">
       <button
-        className="rounded-lg bg-08D9D6 text-white px-3 py-2 text-4xl fixed bottom-10 right-10"
+        className="rounded-lg bg-08D9D6 text-white px-3 py-2 text-4xl fixed bottom-7 right-7"
         onClick={() => Openmodal()}
       >
         <RiQuestionnaireFill />

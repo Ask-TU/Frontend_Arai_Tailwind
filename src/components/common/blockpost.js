@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
-import { BsFillBookmarkFill } from "react-icons/bs";
-
+import { BsFillBookmarkFill, BsChatTextFill } from "react-icons/bs";
 
 const username = "Username";
 const dateTime = "14 Feb 2023, 21:29";
-const titleQuestion = "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ";
+const titleQuestion =
+  "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ แล้วถ้าฝนตากผม ผมจะเปียกมั้ย";
 const classTag = "SF 340";
+const comment = 2;
 
 const Blockpost = () => {
   const [iconColor, setIconColor] = useState("white");
@@ -18,16 +19,18 @@ const Blockpost = () => {
   };
 
   return (
-    <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4">
+    <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4 overflow-hidden">
       <div className="flex items-center">
         <Image src={ProfileImg} alt="" width={40} height={40}></Image>
-        <text className="mx-4">{username}</text>
-        <text className="text-ACACAC text-sm">{dateTime}</text>
+        <div className="max-lg:flex flex-col">
+          <text className="ml-4">{username}</text>
+          <text className="text-ACACAC text-sm ml-4">{dateTime}</text>
+        </div>
       </div>
 
       <div className="ml-14">
-        <div className="mb-3">
-          <text className="text-FF4E4E font-bold text-xl">
+        <div className="my-3">
+          <text className="text-FF7171 font-bold text-xl">
             Q:{" "}
             <span className="text-white font-bold text-xl">
               {titleQuestion}
@@ -35,17 +38,26 @@ const Blockpost = () => {
           </text>
         </div>
 
-        <div className="bg-FF4E4E w-fit p-1 rounded-md text-xs">{classTag}</div>
+        <div className="bg-FF7171 font-semibold w-fit py-1 px-2 rounded-md text-xs">
+          {classTag}
+        </div>
       </div>
 
-      <div className="absolute top-0 right-8">
-        <button className="text-3xl" onClick={() => handleIconClick()}>
-          <BsFillBookmarkFill color={iconColor} />
-        </button>
+      <button
+        className="text-3xl absolute top-0 right-8"
+        onClick={() => handleIconClick()}
+      >
+        <BsFillBookmarkFill color={iconColor} />
+      </button>
+
+      <div className="flex items-center absolute bottom-4 right-8">
+        <span className="text-xl">
+          <BsChatTextFill />
+        </span>
+        <text className="mx-2">{comment}</text>
       </div>
     </div>
   );
 };
 
 export default Blockpost;
-
