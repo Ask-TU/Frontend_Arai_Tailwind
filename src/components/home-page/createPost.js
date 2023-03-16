@@ -13,7 +13,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="bg-242527 flex items-center rounded-lg px-4 h-36 my-5">
+    <div className="bg-242527 flex items-center rounded-lg px-4 h-36 my-5 overflow-hidden">
       <Image src={ProfileImg} alt="Profile icon" width={40} height={40} />
       <button
         className="
