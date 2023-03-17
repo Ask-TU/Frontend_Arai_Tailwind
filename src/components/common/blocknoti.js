@@ -20,11 +20,17 @@ const Blocknoti = () => {
   return (
     <div className="mt-3 p-5 bg-242527 rounded-lg">
       <text className="text-ACACAC text-sm ml-4">{dateTime}</text>
-        <div className= 'mt-2 flex flex-row items-center'>
-          <Image className='ml-4'src={ProfileImg} alt="" width={40} height={40}></Image>
-            <text className='ml-4 text-white'>{username}</text>
-            <text className='ml-1 text-AEC64E text-sm'>{status}</text>
-          </div>
+      <div className="mt-2 flex flex-row items-center">
+        <Image
+          className="ml-4"
+          src={ProfileImg}
+          alt=""
+          width={40}
+          height={40}
+        ></Image>
+        <text className="ml-4 text-white">{username}</text>
+        <text className="ml-1 text-AEC64E text-sm">{status}</text>
+      </div>
     </div>
   );
 };
