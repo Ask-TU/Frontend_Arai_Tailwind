@@ -35,26 +35,72 @@ const Navbar = () => {
 
 const ToggleNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const Openmodal = () => {
-    setIsOpen(true);
-  };
-
-  const Closemodal = () => {
-    setIsOpen(false);
+  const toggledropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div>
+    <div className="relative">
       <button
         className="rounded-lg bg-3D3D3D text-white ml-3 px-3 py-2.5 hover:bg-989898"
-        onClick={() => Openmodal()}
+        onClick={() => toggledropdown()}
       >
         <RxHamburgerMenu />
       </button>
 
-      {/* {isOpen && (
-        // dropdown //
-      )} */}
+      {isOpen && (
+        <div className="absolute top-10 right-0 w-48 p-3 mt-2 bg-242527 rounded-lg shadow-md z-10">
+          <a
+            href="#"
+            className="flex items-center px-4 py-2 text-sm rounded-lg text-white hover:bg-08D9D6"
+            onClick={() => toggledropdown()}
+          >
+            <FaHome />
+            <p className="ml-2">Home</p>
+          </a>
+          <a
+            href="#"
+            className="flex items-center px-4 py-2 text-sm rounded-lg text-white hover:bg-08D9D6"
+            onClick={() => toggledropdown()}
+          >
+            <FaUserCircle />
+            <p className="ml-2">My question</p>
+          </a>
+
+          <a
+            href="#"
+            className="flex items-center px-4 py-2 text-sm rounded-lg text-white hover:bg-08D9D6"
+            onClick={() => toggledropdown()}
+          >
+            <BsFillBookmarkFill />
+            <p className="ml-2">Book</p>
+          </a>
+
+          <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-full">
+            <p className="absolute top-3 left-5 text-sm">Class</p>
+            <div className="mt-6 flex flex-col">
+              <button
+                className="p-2 rounded-lg hover:bg-08D9D6"
+                onClick={() => toggledropdown()}
+              >
+                SF340
+              </button>
+              <button
+                className="p-2 rounded-lg hover:bg-08D9D6"
+                onClick={() => toggledropdown()}
+              >
+                SF340
+              </button>
+              <button
+                className="p-2 rounded-lg hover:bg-08D9D6"
+                onClick={() => toggledropdown()}
+              >
+                SF340
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
