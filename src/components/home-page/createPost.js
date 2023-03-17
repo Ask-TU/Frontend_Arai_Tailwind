@@ -4,12 +4,8 @@ import React, { useState } from "react";
 
 const CreatePost = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const Openmodal = () => {
-    setIsOpen(true);
-  };
-
-  const Closemodal = () => {
-    setIsOpen(false);
+  const togglemodal = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -26,7 +22,7 @@ const CreatePost = () => {
       py-2 px-5 mx-4 
       w-full 
       hover:bg-828282"
-        onClick={() => Openmodal()}
+        onClick={() => togglemodal()}
       >
         Have any question?
       </button>
@@ -82,7 +78,7 @@ const CreatePost = () => {
                 <div className="flex justify-center">
                   <button
                     className="text-white text-lg bg-08D9D6 w-fit py-1 px-4 rounded-lg mt-3"
-                    onClick={() => Closemodal()}
+                    onClick={() => togglemodal()}
                   >
                     Post
                   </button>

@@ -25,19 +25,15 @@ const Header = () => {
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const Openmodal = () => {
-    setIsOpen(true);
-  };
-
-  const Closemodal = () => {
-    setIsOpen(false);
+  const togglemodal = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className="max-md:hidden">
       <button
         className="rounded-lg bg-08D9D6 text-white px-3 py-2 text-4xl fixed bottom-5 right-5"
-        onClick={() => Openmodal()}
+        onClick={() => togglemodal()}
       >
         <RiQuestionnaireFill />
       </button>
@@ -100,7 +96,7 @@ const Footer = () => {
                 <div className="flex justify-center">
                   <button
                     className="text-white text-lg bg-08D9D6 w-fit py-1 px-4 rounded-lg mt-3"
-                    onClick={() => Closemodal()}
+                    onClick={() => togglemodal()}
                   >
                     Post
                   </button>
