@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../../public/assets/ARAI.png";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
+import Link from "next/link";
 import { BsFillBellFill, BsPersonCircle } from "react-icons/bs";
 import { RiQuestionnaireFill } from "react-icons/ri";
 
@@ -9,11 +10,15 @@ const Header = () => {
   return (
     <div className="z-10 flex justify-between border-b border-black bg-242527 p-4 sticky top-0">
       <div className="mx-5">
-        <Image src={logo} alt="" width={98} height={45} />
+        <Link href={"/home"}>
+          <Image src={logo} alt="" width={98} height={45} />
+        </Link>
       </div>
       <div className="mx-2">
         <button className="text-2xl text-white mx-3">
-          <BsFillBellFill />
+          <Link href={"/notification"}>
+            <BsFillBellFill />
+          </Link>
         </button>
         <button className="text-2xl text-white mx-3">
           <BsPersonCircle />

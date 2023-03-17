@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import { FaHome, FaUserCircle } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <nav className="fixed left-10">
       <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
-        <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
-          <FaHome />
-          <p className="ml-2">Home</p>
-        </button>
+        <Link
+          href={"/home"}
+          className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6"
+        >
+          <button className="flex items-center">
+            <FaHome />
+            <p className="ml-2">Home</p>
+          </button>
+        </Link>
         <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
           <FaUserCircle />
           <p className="ml-2">My question</p>
@@ -50,31 +56,33 @@ const ToggleNav = () => {
 
       {isOpen && (
         <div className="absolute top-10 right-0 w-48 p-3 mt-2 bg-242527 rounded-lg shadow-md z-10">
-          <a
-            href="#"
-            className="flex items-center px-4 py-2 text-sm rounded-lg text-white hover:bg-08D9D6"
+          <Link
+            href={"/home"}
+            className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6"
             onClick={() => toggledropdown()}
           >
-            <FaHome />
-            <p className="ml-2">Home</p>
-          </a>
-          <a
+            <button className="flex items-center text-white">
+              <FaHome />
+              <p className="ml-2">Home</p>
+            </button>
+          </Link>
+          <Link
             href="#"
-            className="flex items-center px-4 py-2 text-sm rounded-lg text-white hover:bg-08D9D6"
+            className="flex items-center p-2 text-sm rounded-lg text-white hover:bg-08D9D6"
             onClick={() => toggledropdown()}
           >
             <FaUserCircle />
             <p className="ml-2">My question</p>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="#"
-            className="flex items-center px-4 py-2 text-sm rounded-lg text-white hover:bg-08D9D6"
+            className="flex items-center p-2 text-sm rounded-lg text-white hover:bg-08D9D6"
             onClick={() => toggledropdown()}
           >
             <BsFillBookmarkFill />
             <p className="ml-2">Book</p>
-          </a>
+          </Link>
 
           <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-full">
             <p className="absolute top-3 left-5 text-sm">Class</p>
