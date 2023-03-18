@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="z-10 flex justify-between border-b border-black bg-242527 p-4 sticky top-0">
       <div className="mx-5">
-        <Link href={"/home"}>
+        <Link href={"/Home"}>
           <Image src={logo} alt="" width={98} height={45} />
         </Link>
       </div>
@@ -20,9 +20,12 @@ const Header = () => {
             <BsFillBellFill />
           </Link>
         </button>
-        <button className="text-2xl text-white mx-3">
-          <BsPersonCircle />
-        </button>
+        <Link href={"/"}>
+          <button className="text-2xl text-white mx-3">
+            <BsPersonCircle />
+          </button>
+        </Link>
+
       </div>
     </div>
   );
