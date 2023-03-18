@@ -20,6 +20,7 @@ const Blockpost = () => {
 
   return (
     <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4">
+      {/* บรรทัดข้างบน มี relative ทำให้เวลากด new class pop up จาก navbar มันจะอยู่ล่าง blockpost แต่กดจาก toggleไม่มีปัญหา */}
       <div className="flex items-center">
         <Image src={ProfileImg} alt="" width={40} height={40}></Image>
         <div className="max-lg:flex flex-col">

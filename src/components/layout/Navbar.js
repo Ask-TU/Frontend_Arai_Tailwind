@@ -3,6 +3,7 @@ import { FaHome, FaUserCircle } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
+import NewClass from "@/components/home-page/NewClass";
 
 const Navbar = () => {
   return (
@@ -30,10 +31,28 @@ const Navbar = () => {
       <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
         <p className="absolute top-3 left-5 text-sm">Class</p>
         <div className="mt-6 flex flex-col">
-          <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
-          <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
-          <button className="p-2 rounded-lg hover:bg-08D9D6">SF340</button>
+          <Link
+            href={"/class"}
+            className="flex justify-center rounded-lg hover:bg-08D9D6"
+          >
+            <button className="p-2 ">SF340</button>
+          </Link>
+          <Link
+            href={"/class"}
+            className="flex justify-center rounded-lg hover:bg-08D9D6"
+          >
+            <button className="p-2 ">SF340</button>
+          </Link>
+          <Link
+            href={"/class"}
+            className="flex justify-center rounded-lg hover:bg-08D9D6"
+          >
+            <button className="p-2 ">SF340</button>
+          </Link>
         </div>
+      </div>
+      <div className="relative flex justify-center">
+        <NewClass />
       </div>
     </nav>
   );
@@ -84,7 +103,7 @@ const ToggleNav = () => {
             <p className="ml-2">Book</p>
           </Link>
 
-          <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-full">
+          <div className="relative flex flex-col bg-242527 text-white rounded-lg mt-5 p-3 w-full">
             <p className="absolute top-3 left-5 text-sm">Class</p>
             <div className="mt-6 flex flex-col">
               <button
@@ -99,13 +118,16 @@ const ToggleNav = () => {
               >
                 SF340
               </button>
-              <button
-                className="p-2 rounded-lg hover:bg-08D9D6"
-                onClick={() => toggledropdown()}
+              <Link
+                href={"/class"}
+                className="flex justify-center rounded-lg hover:bg-08D9D6"
               >
-                SF340
-              </button>
+                <button className="p-2 ">SF340</button>
+              </Link>
             </div>
+          </div>
+          <div className="relative flex justify-center">
+            <NewClass />
           </div>
         </div>
       )}
