@@ -46,8 +46,8 @@ const Questionblock = () => {
         </div>
       </div>
 
-      <textarea 
-        className="bg-3A3B3D  rounded-lg w-11/12 h-40 mt-9 ml-12  mb-11 items-center Static "
+      <textarea
+        className="bg-3A3B3D  rounded-lg w-11/12 h-40 mt-9 ml-12 pt-7 pl-7 mb-11 items-center Static "
         placeholder="พอดีผมสงสัยอะครับว่า ถ้าเกิดว่าผมตากฝน ฝนจะแห้งมั้ยครับ เพราะอะไร"
       />
     </div>
