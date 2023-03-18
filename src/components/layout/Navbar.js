@@ -9,7 +9,7 @@ const Navbar = () => {
     <nav className="fixed left-10">
       <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
         <Link
-          href={"/Home"}
+          href={"/home"}
           className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6"
         >
           <button className="flex items-center">

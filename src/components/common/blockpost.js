@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
-import { BsFillBookmarkFill } from "react-icons/bs";
-
+import { BsFillBookmarkFill, BsChatTextFill } from "react-icons/bs";
 
 const username = "Username";
 const dateTime = "14 Feb 2023, 21:29";
