@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="z-10 flex justify-between border-b border-black bg-242527 p-4 sticky top-0">
       <div className="mx-5">
-        <Link href={"/Home"}>
+        <Link href={"/home"}>
           <Image src={logo} alt="" width={98} height={45} />
         </Link>
       </div>
@@ -25,7 +25,6 @@ const Header = () => {
             <BsPersonCircle />
           </button>
         </Link>
-
       </div>
     </div>
   );
