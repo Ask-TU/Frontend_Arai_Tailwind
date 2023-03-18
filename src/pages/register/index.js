@@ -34,8 +34,6 @@ const index = () => {
         .then(response => {
           response.json()
               .then(data => {
-                console.log(data.token)
-                setCookie('token', data.token);
                 console.log("First Name = " + first)
                 console.log("Last Name = " + last)
                 console.log("Nick Name = " + nick)
@@ -43,7 +41,7 @@ const index = () => {
                 console.log("Password = " + pass)
                 console.log("Phone = " + phone)
                 console.log("Type = " + type)
-                router.push('/')
+                postLogin();
               });
       })
       .catch (error => {
@@ -56,6 +54,46 @@ const index = () => {
     function simulateNetworkRequest() {
         return new Promise((resolve) => setTimeout(resolve, 2000));
     }
+
+    const requestOptionsLogin = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          "email": email,
+          "password" : pass,
+        })
+      };
+
+    const postLogin = async () => {
+        await fetch('http://localhost:8080/auth/login', requestOptionsLogin)
+          .then(response => {
+            response.json()
+                .then(data => {
+                  setCookie('token', data.token);
+                  setCookie('firstname', data.first_name);
+                  setCookie('lastname', data.last_name);
+                  setCookie('nickname', data.nick_name);
+                  setCookie('phone', data.phone);
+                  setCookie('stdID', data.student_id)
+                  setCookie('id', data.user_id);
+                  console.log(data)
+                  console.log(data.token)
+                  console.log(data.first_name)
+                  console.log(data.last_name)
+                  console.log(data.nick_name)
+                  console.log(data.phone)
+                  console.log(data.classrooms)
+                  console.log("Email = " + email)
+                  console.log("Password = " + pass)
+                  router.push('/')
+                });
+        })
+        .catch (error => {
+          if (error.message == 'Error: You need to specify name or key when calling navigate with an object as the argument. See https://reactnavigation.org/docs/navigation-actions#navigate for usage.') {
+          }
+          console.error(error);
+        }) 
+      }
     
     const [isLoading, setLoading] = useState(false);
 

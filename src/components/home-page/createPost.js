@@ -4,16 +4,12 @@ import React, { useState } from "react";
 
 const CreatePost = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const Openmodal = () => {
-    setIsOpen(true);
-  };
-
-  const Closemodal = () => {
-    setIsOpen(false);
+  const togglemodal = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className="bg-242527 flex items-center rounded-lg px-4 h-36 my-5">
+    <div className="bg-242527 flex items-center rounded-lg px-4 h-36 my-5 overflow-hidden">
       <Image src={ProfileImg} alt="Profile icon" width={40} height={40} />
       <button
         className="
@@ -26,7 +22,7 @@ const CreatePost = () => {
       py-2 px-5 mx-4 
       w-full 
       hover:bg-828282"
-        onClick={() => Openmodal()}
+        onClick={() => togglemodal()}
       >
         Have any question?
       </button>
@@ -51,13 +47,6 @@ const CreatePost = () => {
                 </div>
 
                 <label className="flex w-full">
-                  <span className="sr-only">Search</span>
-                  <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-                    <svg
-                      className="h-5 w-5 fill-slate-300"
-                      viewBox="0 0 20 20"
-                    ></svg>
-                  </span>
                   <input
                     className="placeholder:font-bold placeholder:text-slate-400 placeholder:text-lg block bg-636363 w-full rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-lg"
                     placeholder="Question Title"
@@ -89,7 +78,7 @@ const CreatePost = () => {
                 <div className="flex justify-center">
                   <button
                     className="text-white text-lg bg-08D9D6 w-fit py-1 px-4 rounded-lg mt-3"
-                    onClick={() => Closemodal()}
+                    onClick={() => togglemodal()}
                   >
                     Post
                   </button>

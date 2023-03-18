@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../../public/assets/ARAI.png";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
+import Link from "next/link";
 import { BsFillBellFill, BsPersonCircle } from "react-icons/bs";
 import { RiQuestionnaireFill } from "react-icons/ri";
 
@@ -9,15 +10,22 @@ const Header = () => {
   return (
     <div className="z-10 flex justify-between border-b border-black bg-242527 p-4 sticky top-0">
       <div className="mx-5">
-        <Image src={logo} alt="" width={98} height={45} />
+        <Link href={"/Home"}>
+          <Image src={logo} alt="" width={98} height={45} />
+        </Link>
       </div>
       <div className="mx-2">
         <button className="text-2xl text-white mx-3">
-          <BsFillBellFill />
+          <Link href={"/notification"}>
+            <BsFillBellFill />
+          </Link>
         </button>
-        <button className="text-2xl text-white mx-3">
-          <BsPersonCircle />
-        </button>
+        <Link href={"/"}>
+          <button className="text-2xl text-white mx-3">
+            <BsPersonCircle />
+          </button>
+        </Link>
+
       </div>
     </div>
   );
@@ -25,19 +33,15 @@ const Header = () => {
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const Openmodal = () => {
-    setIsOpen(true);
-  };
-
-  const Closemodal = () => {
-    setIsOpen(false);
+  const togglemodal = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div>
+    <div className="max-md:hidden">
       <button
-        className="rounded-lg bg-08D9D6 text-white px-3 py-2 text-4xl fixed bottom-10 right-10"
-        onClick={() => Openmodal()}
+        className="rounded-lg bg-08D9D6 text-white px-3 py-2 text-4xl fixed bottom-5 right-5"
+        onClick={() => togglemodal()}
       >
         <RiQuestionnaireFill />
       </button>
@@ -100,7 +104,7 @@ const Footer = () => {
                 <div className="flex justify-center">
                   <button
                     className="text-white text-lg bg-08D9D6 w-fit py-1 px-4 rounded-lg mt-3"
-                    onClick={() => Closemodal()}
+                    onClick={() => togglemodal()}
                   >
                     Post
                   </button>

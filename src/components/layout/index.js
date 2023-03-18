@@ -5,10 +5,10 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="mt-10 max-xl:hidden">
+      <div className="mt-8 max-xl:hidden">
         <Navbar />
       </div>
-      <main className="w-full h-screen">{children}</main>
+      <main className="w-full h-full">{children}</main>
       <Footer />
     </>
   );
