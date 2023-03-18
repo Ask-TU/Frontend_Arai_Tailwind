@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import Link from "next/link";
 
 
 const username = "Username";
@@ -18,6 +19,7 @@ const Blockpost = () => {
   };
 
   return (
+
     <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4">
       <div className="flex items-center">
         <Image src={ProfileImg} alt="" width={40} height={40}></Image>
