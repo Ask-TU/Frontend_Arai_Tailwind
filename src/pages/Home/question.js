@@ -7,17 +7,19 @@ const question = () => {
   return (
     <>
       <Layout>
-        <div className="m-auto max-w-5xl h-2/5">
-          <Questionblock />
-        </div>
-        <div className="pt-5">
-          <Typeanswer />
-        </div>
-        <div className="pt-5 m-auto max-w-5xl h-2/5">
-          <Answerblock />
-          <Answerblock />
-          <Answerblock />
-          <Answerblock />
+        <div className="m-8">
+          <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
+            <Questionblock />
+            <div className="pt-5 w-full">
+              <Typeanswer />
+            </div>
+            <div className="pt-5 m-auto w-full">
+              <Answerblock />
+              <Answerblock />
+              <Answerblock />
+              <Answerblock />
+            </div>
+          </div>
         </div>
       </Layout>
     </>

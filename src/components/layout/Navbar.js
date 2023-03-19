@@ -7,7 +7,7 @@ import NewClass from "@/components/home-page/NewClass";
 
 const Navbar = () => {
   return (
-    <nav className="fixed left-10">
+    <nav className="fixed left-10 z-50">
       <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
         <Link
           href={"/home"}
@@ -37,21 +37,9 @@ const Navbar = () => {
           >
             <button className="p-2 ">SF340</button>
           </Link>
-          <Link
-            href={"/class"}
-            className="flex justify-center rounded-lg hover:bg-08D9D6"
-          >
-            <button className="p-2 ">SF340</button>
-          </Link>
-          <Link
-            href={"/class"}
-            className="flex justify-center rounded-lg hover:bg-08D9D6"
-          >
-            <button className="p-2 ">SF340</button>
-          </Link>
         </div>
       </div>
-      <div className="relative flex justify-center">
+      <div className="flex justify-center">
         <NewClass />
       </div>
     </nav>
@@ -65,7 +53,7 @@ const ToggleNav = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative xl:hidden">
       <button
         className="rounded-lg bg-3D3D3D text-white ml-3 px-3 py-2.5 hover:bg-989898"
         onClick={() => toggledropdown()}
@@ -106,23 +94,13 @@ const ToggleNav = () => {
           <div className="relative flex flex-col bg-242527 text-white rounded-lg mt-5 p-3 w-full">
             <p className="absolute top-3 left-5 text-sm">Class</p>
             <div className="mt-6 flex flex-col">
-              <button
-                className="p-2 rounded-lg hover:bg-08D9D6"
-                onClick={() => toggledropdown()}
-              >
-                SF340
-              </button>
-              <button
-                className="p-2 rounded-lg hover:bg-08D9D6"
-                onClick={() => toggledropdown()}
-              >
-                SF340
-              </button>
-              <Link
-                href={"/class"}
-                className="flex justify-center rounded-lg hover:bg-08D9D6"
-              >
-                <button className="p-2 ">SF340</button>
+              <Link href={"/class"}>
+                <button
+                  className="p-2 rounded-lg hover:bg-08D9D6 w-full"
+                  onClick={() => toggledropdown()}
+                >
+                  SF340
+                </button>
               </Link>
             </div>
           </div>

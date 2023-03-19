@@ -7,6 +7,8 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 const username = "Username";
 const dateTime = "14 Feb 2023, 21:29";
 const titleQuestion = "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ";
+const questionDetail =
+  "พอดีผมสงสัยอะครับว่า ถ้่าเกิดผมตากฝน ฝนจะแห้งมั้ยครับ เพราะอะไร";
 const classTag = "SF 340";
 
 const Questionblock = () => {
@@ -17,10 +19,16 @@ const Questionblock = () => {
   };
 
   return (
-    <div className="relative bg-242527 flex flex-col  my-5 text-white p-4   rounded-lg w-full h-full  ">
-      <div className=" flex flex-row  items-center mt-9">
+    <div className="relative bg-242527 flex flex-col my-5 text-white p-5 rounded-lg w-full">
+      <div className=" flex flex-col justify-start">
+        <div className="flex items-center">
+          <Image src={ProfileImg} alt="" width={40} height={40}></Image>
+          <text className="mx-4">{username}</text>
+          <text className="text-ACACAC text-sm">{dateTime}</text>
+        </div>
+
         <div className="ml-14">
-          <div className="mb-3">
+          <div className="my-3">
             <text className="text-FF4E4E font-bold text-xl">
               Q:{" "}
               <span className="text-white font-bold text-xl">
@@ -33,11 +41,6 @@ const Questionblock = () => {
             {classTag}
           </div>
         </div>
-        <div className="flex items-center ml-auto mb-8 mr-12 ">
-          <Image src={ProfileImg} alt="" width={40} height={40}></Image>
-          <text className="mx-4">{username}</text>
-          <text className="text-ACACAC text-sm">{dateTime}</text>
-        </div>
 
         <div className="absolute top-0 right-8">
           <button className="text-3xl" onClick={() => handleIconClick()}>
@@ -46,10 +49,7 @@ const Questionblock = () => {
         </div>
       </div>
 
-      <textarea
-        className="bg-3A3B3D  rounded-lg w-11/12 h-40 mt-9 ml-12 pt-7 pl-7 mb-11 items-center Static "
-        placeholder="พอดีผมสงสัยอะครับว่า ถ้าเกิดว่าผมตากฝน ฝนจะแห้งมั้ยครับ เพราะอะไร"
-      />
+      <div className="bg-3A3B3D rounded-lg p-4 mt-5">{questionDetail}</div>
     </div>
   );
 };

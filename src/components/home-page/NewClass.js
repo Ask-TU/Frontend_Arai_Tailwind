@@ -20,7 +20,7 @@ const NewClass = () => {
       </button>
 
       {isOpen && (
-        <div class="fixed z-20 inset-0 overflow-y-auto">
+        <div class="fixed z-50 inset-0 overflow-y-auto">
           <div class="flex items-center justify-center min-h-screen">
             <div class="fixed inset-0 bg-272727 bg-opacity-75 backdrop-blur">
               <div
