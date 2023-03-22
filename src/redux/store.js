@@ -1,7 +1,8 @@
-import React from "react";
+import { configureStore } from "@reduxjs/toolkit";
 
-const store = () => {
-  return <div>store</div>;
-};
+import rootReducer from "./rootReducer";
 
-export default store;
+export const store = configureStore({
+  reducer: rootReducer,
+  devTools: process.env.NODE_ENV === "development",
+});

@@ -1,7 +1,8 @@
-import React from "react";
+import { combineReducers } from "@reduxjs/toolkit";
+import counterSlice from "./slices/counterSlice";
 
-const rootReducer = () => {
-  return <div>rootReducer</div>;
-};
+const rootReducer = combineReducers({
+  counter: counterSlice,
+});
 
 export default rootReducer;
