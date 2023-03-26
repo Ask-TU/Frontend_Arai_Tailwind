@@ -51,9 +51,7 @@ const index = () => {
       }) 
     }
 
-    function simulateNetworkRequest() {
-        return new Promise((resolve) => setTimeout(resolve, 2000));
-    }
+
 
     const requestOptionsLogin = {
         method: 'POST',
@@ -70,12 +68,6 @@ const index = () => {
             response.json()
                 .then(data => {
                   setCookie('token', data.token);
-                  setCookie('firstname', data.first_name);
-                  setCookie('lastname', data.last_name);
-                  setCookie('nickname', data.nick_name);
-                  setCookie('phone', data.phone);
-                  setCookie('stdID', data.student_id)
-                  setCookie('id', data.user_id);
                   console.log(data)
                   console.log(data.token)
                   console.log(data.first_name)
@@ -94,18 +86,18 @@ const index = () => {
           console.error(error);
         }) 
       }
-    
+
     const [isLoading, setLoading] = useState(false);
 
     useEffect(() => {
     if (isLoading) {
-        simulateNetworkRequest().then(() => {
-        setLoading(false);
+        postSignIN().then(() => {
+            setLoading(false);
         });
     }
     }, [isLoading]);
 
-    const handleClick = () => {setLoading(true), postSignIN()};
+    const handleClick = () => {setLoading(true)};
 
     return (
         <>
