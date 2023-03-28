@@ -11,7 +11,7 @@ const questionDetail =
   "พอดีผมสงสัยอะครับว่า ถ้่าเกิดผมตากฝน ฝนจะแห้งมั้ยครับ เพราะอะไร";
 const classTag = "SF 340";
 
-const Questionblock = () => {
+const Questionblock = ({username, dateTime, titleQuestion, questionDetail, classTag}) => {
   const [iconColor, setIconColor] = useState("white");
 
   const handleIconClick = () => {

@@ -6,6 +6,12 @@ import Link from "next/link";
 import NewClass from "@/components/home-page/NewClass";
 
 const Navbar = () => {
+  const classData = [
+    {class: "SF340"},
+    {class: "SF341"},
+    {class: "SF342"},
+    {class: "SF343"},
+  ]
   return (
     <nav className="fixed left-10 z-10">
       <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
@@ -31,12 +37,14 @@ const Navbar = () => {
       <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
         <p className="absolute top-3 left-5 text-sm">Class</p>
         <div className="mt-6 flex flex-col">
-          <Link
-            href={"/class"}
-            className="flex justify-center rounded-lg hover:bg-08D9D6"
-          >
-            <button className="p-2 ">SF340</button>
-          </Link>
+          {classData.map((items)=>(
+            <Link
+              href={"/class"}
+              className="flex justify-center rounded-lg hover:bg-08D9D6"
+            >
+              <button className="p-2 ">{items.class}</button>
+            </Link>
+          ))}
         </div>
       </div>
       <div className="flex justify-center">

@@ -12,7 +12,7 @@ const titleQuestion =
 const classTag = "SF 340";
 const comment = 2;
 
-const Blockpost = () => {
+const Blockpost = ({username, dateTime, titleQuestion, classTag, comment}) => {
   const [iconColor, setIconColor] = useState("white");
 
   const handleIconClick = () => {
@@ -30,7 +30,7 @@ const Blockpost = () => {
         </div>
       </div>
 
-      <Link className="ml-14" href={"/home/question"}>
+      <div className="ml-14">
         <div className="my-3">
           <text className="text-FF7171 font-bold text-xl">
             Q:{" "}
@@ -43,7 +43,7 @@ const Blockpost = () => {
         <div className="bg-FF7171 font-semibold w-fit py-1 px-2 rounded-md text-xs">
           {classTag}
         </div>
-      </Link>
+      </div>
 
       <button
         className="text-3xl absolute top-0 right-8"
@@ -52,15 +52,15 @@ const Blockpost = () => {
         <BsFillBookmarkFill color={iconColor} />
       </button>
 
-      <Link
+      <div
         className="flex items-center absolute bottom-4 right-8"
-        href={"/home/question"}
+        // href={"/home/question"}
       >
         <span className="text-xl">
           <BsChatTextFill />
         </span>
         <text className="mx-2">{comment}</text>
-      </Link>
+      </div>
     </div>
   );
 };

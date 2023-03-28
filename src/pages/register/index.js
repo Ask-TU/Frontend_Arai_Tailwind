@@ -67,17 +67,25 @@ const index = () => {
           .then(response => {
             response.json()
                 .then(data => {
-                  setCookie('token', data.token);
-                  console.log(data)
-                  console.log(data.token)
-                  console.log(data.first_name)
-                  console.log(data.last_name)
-                  console.log(data.nick_name)
-                  console.log(data.phone)
-                  console.log(data.classrooms)
-                  console.log("Email = " + email)
-                  console.log("Password = " + pass)
-                  router.push('/')
+                    if(data.token == null || data.token == undefined || data.token == " ") {
+                        // setCookie('token', data.token);
+                        // console.log(data.token) 
+                        // console.log("Set Cookie!")
+                    } else {
+                        setCookie('token', data.token);
+                        console.log(data.token) 
+                        console.log("Set Cookie!")
+                    }
+                    console.log(data)
+                    console.log(data.token)
+                    console.log(data.first_name)
+                    console.log(data.last_name)
+                    console.log(data.nick_name)
+                    console.log(data.phone)
+                    console.log(data.classrooms)
+                    console.log("Email = " + email)
+                    console.log("Password = " + pass)
+                    router.push('/')
                 });
         })
         .catch (error => {
@@ -111,10 +119,10 @@ const index = () => {
                             Please complete the information and check before pressing the Register button.
                         </p>
                     </div>
-                    <div class="grid md:grid-cols-2 md:gap-4 grid-cols-1  mb-6">
+                    <div className="grid md:grid-cols-2 md:gap-4 grid-cols-1  mb-6">
                         <div>
                             <div className="mb-1">
-                                <label for="phone" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your phone</label>
+                                <label htmlFor="phone" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your phone</label>
                                 <input 
                                     type="number" 
                                     id="phone" 
@@ -125,7 +133,7 @@ const index = () => {
                                 />
                             </div>
                             <div className="mb-1">
-                                <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                                <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                                 <input 
                                     type="email" 
                                     id="email" 
@@ -136,7 +144,7 @@ const index = () => {
                                 />
                             </div>
                             <div className="mb-1">
-                                <label for="password" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+                                <label htmlFor="password" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
                                 <input 
                                     type="password" 
                                     id="password" 
@@ -147,7 +155,7 @@ const index = () => {
                                 />
                             </div>                            
                             <div className="mb-1">
-                                <label for="confirm_email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                                <label htmlFor="confirm_email" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
                                 <input 
                                     type="password" 
                                     id="confirm_email" 
@@ -160,7 +168,7 @@ const index = () => {
                         
                         <div>
                             <div className="mb-1">
-                                <label for="first_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your first name</label>
+                                <label htmlFor="first_name" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your first name</label>
                                 <input 
                                     type="text" 
                                     id="first_name" 
@@ -171,7 +179,7 @@ const index = () => {
                                 />
                             </div>
                             <div className="mb-1">
-                                <label for="last_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your last name</label>
+                                <label htmlFor="last_name" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your last name</label>
                                 <input 
                                     type="text" 
                                     id="last_name" 
@@ -182,7 +190,7 @@ const index = () => {
                                 />
                             </div>
                             <div className="mb-1">
-                                <label for="nick_name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your nick name</label>
+                                <label htmlFor="nick_name" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your nick name</label>
                                 <input 
                                     type="text" 
                                     id="nick_name" 
@@ -193,7 +201,7 @@ const index = () => {
                                 />
                             </div>
                             <div className="mb-1">
-                                <label for="stdID" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your student ID</label>
+                                <label htmlFor="stdID" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your student ID</label>
                                 <input 
                                     type="number" 
                                     id="stdID" 

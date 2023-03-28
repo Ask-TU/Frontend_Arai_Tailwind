@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { setCookie } from 'cookies-next';
+import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthState } from '@/redux/slices/publicSlice';
 
 const index = () => {
     const router = useRouter();
+    const dispath = useDispatch();
 
     //user handle
     const [email, setEmail] = useState("");
@@ -25,23 +28,30 @@ const index = () => {
           .then(response => {
             response.json()
                 .then(data => {
-                  setCookie('token', data.token);
-                  console.log(data)
-                  console.log(data.token)
-                  console.log(data.first_name)
-                  console.log(data.last_name)
-                  console.log(data.nick_name)
-                  console.log(data.phone)
-                  console.log(data.classrooms)
-                  console.log("Email = " + email)
-                  console.log("Password = " + pass)
-                  router.push('/')
+                    if(data.token == null || data.token == undefined || data.token == " ") {
+                        // setCookie('token', data.token);
+                        // console.log(data.token) 
+                        // console.log("Set Cookie!")
+                    } else {
+                        setCookie('token', data.token);
+                        console.log(data.token) 
+                        console.log("Set Cookie!")
+                    }
+                    console.log(data)
+                    console.log(data.token)
+                    console.log(data.first_name)
+                    console.log(data.last_name)
+                    console.log(data.nick_name)
+                    console.log(data.phone)
+                    console.log(data.classrooms)
+                    console.log("Email = " + email)
+                    console.log("Password = " + pass)
+                    router.push('/')
                 });
         })
         .catch (error => {
-          if (error.message == 'Error: You need to specify name or key when calling navigate with an object as the argument. See https://reactnavigation.org/docs/navigation-actions#navigate for usage.') {
-          }
-          console.error(error);
+            dispath(setAuthState(false))
+            console.error(error);
         }) 
       }
     //function loading
@@ -71,7 +81,7 @@ const index = () => {
                     </div>
                     
                     <div className="mb-1">
-                        <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                         <input 
                             type="email" 
                             id="email" 
@@ -82,7 +92,7 @@ const index = () => {
                         />
                     </div>
                     <div className="mb-6">
-                        <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+                        <label htmlFor="email" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
                         <input 
                             type="password" 
                             id="password" 
@@ -97,19 +107,20 @@ const index = () => {
                         <div className="flex items-center md:h-7 h-5">
                             <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
                         </div>
-                        <label for="remember" className="ml-2 md:text-lg text-sm font-medium text-white dark:text-white">Remember me</label>
+                        <label htmlFor="remember" className="ml-2 md:text-lg text-sm font-medium text-white dark:text-white">Remember me</label>
                         <label className="ml-4 md:text-lg text-sm font-medium text-828282 dark:text-828282"><a href='/register'>Forgot Password?</a></label>
                     </div>
-                    <div className='flex justify-center'>
-                        <Link  href='/register' className='mr-6'>
-                           <button type="submit" className="text-black bg-white hover:bg-gray-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-white dark:hover:bg-gray-300">Register</button> 
-                        </Link>   
+                    <div className='flex justify-center'>                        
                         <button 
                             type="submit" 
-                            className="text-white bg-08D9D6 hover:bg-12A6A4 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-08D9D6 dark:hover:bg-12A6A4 ml-6"
+                            className="text-white bg-08D9D6 hover:bg-12A6A4 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-08D9D6 dark:hover:bg-12A6A4 mr-6"
                             disabled={isLoading}
                             onClick={!isLoading ? handleClick : null}
-                        >{isLoading ? 'Loading…' : 'Login'}</button>       
+                        >{isLoading ? 'Loading…' : 'Login'}</button>    
+                        <Link  href='/register' className='ml-6'>
+                           <button type="submit" className="text-black bg-white hover:bg-gray-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-white dark:hover:bg-gray-300">Register</button> 
+                        </Link>   
+   
                     </div>
                 </form>
             </div>

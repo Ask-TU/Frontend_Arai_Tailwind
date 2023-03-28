@@ -3,9 +3,45 @@ import Layout from "@/components/layout";
 import Blockpost from "@/components/common/blockpost";
 import { ToggleNav } from "@/components/layout/Navbar";
 import CreatePost from "@/components/home-page/createPost";
-import React from "react";
+import React , {useState} from "react";
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuestions } from "@/redux/slices/publicSlice";
 
 const index = () => {
+  const dispatch = useDispatch();
+  const publicSlice = useSelector((state) => state.publicData);
+  const BlockPostData = [
+    {
+      username: "Username",
+      dateTime: "14 Feb 2023, 21:29", 
+      titleQuestion: "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ แล้วถ้าฝนตากผม ผมจะเปียกมั้ย", 
+      classTag: "SF 340", 
+      comment: 2
+    },
+    {
+      username: "Chawin",
+      dateTime: "14 Feb 2023, 21:29", 
+      titleQuestion: "ฝนจะแห้งมั้ยครับ แล้วถ้าฝนตากผม ผมจะเปียกมั้ย", 
+      classTag: "SF 340", 
+      comment: 2
+    },
+    {
+      username: "Thank",
+      dateTime: "14 Feb 2023, 21:29", 
+      titleQuestion: "ถ้าผมตากฝน แล้วถ้าฝนตากผม ผมจะเปียกมั้ย", 
+      classTag: "SF 340", 
+      comment: 2
+    },
+    {
+      username: "Test",
+      dateTime: "14 Feb 2023, 21:29", 
+      titleQuestion: "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ ผมจะเปียกมั้ย", 
+      classTag: "SF 340", 
+      comment: 2
+    }
+  ]
+
   return (
     <Layout>
       <div className="m-8">
@@ -18,10 +54,11 @@ const index = () => {
             <CreatePost />
           </div>
           <div className="pt-5">
-            <Blockpost />
-            <Blockpost />
-            <Blockpost />
-            <Blockpost />
+            {BlockPostData.map((items) => (
+              <Link key={items.titleQuestion} href={"/home/question"} onClick={()=>{dispatch(setQuestions(items)); console.log(publicSlice.questions); console.log(publicSlice.questions.username)}}>
+                <Blockpost username = {items.username} dateTime = {items.dateTime} titleQuestion = {items.titleQuestion} classTag = {items.classTag} comment = {items.comment}/>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
