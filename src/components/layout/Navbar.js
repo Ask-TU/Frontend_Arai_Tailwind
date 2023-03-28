@@ -7,7 +7,7 @@ import NewClass from "@/components/home-page/NewClass";
 
 const Navbar = () => {
   return (
-    <nav className="fixed left-10 z-50">
+    <nav className="fixed left-10 z-10">
       <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
         <Link
           href={"/home"}
