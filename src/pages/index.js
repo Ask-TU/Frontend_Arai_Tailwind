@@ -1,7 +1,6 @@
-import { getCookie, hasCookie } from 'cookies-next';
+import { hasCookie } from 'cookies-next';
 import Login from "./login";
 import Home from "./home";
-import { useSelector } from 'react-redux';
 
 export default function App(){
   const token = hasCookie('token');
@@ -10,10 +9,4 @@ export default function App(){
     } else {
       return <Login/>;
     }
-  // const auth = useSelector((state)=>state.publicData);
-  // if (auth.authState) {
-  //     return <Home/>;
-  //   } else {
-  //     return <Login/>;
-  // }
 }
