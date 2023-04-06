@@ -5,8 +5,8 @@ import Home from "./home";
 export default function App(){
   const token = hasCookie('token');
   if(token){
-      return <Home/>;
+      return <Home/>
     } else {
-      return <Login/>;
+      return <Login/>
     }
 }
