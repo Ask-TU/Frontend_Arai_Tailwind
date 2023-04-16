@@ -3,10 +3,11 @@ import Layout from "@/components/layout";
 import Blockpost from "@/components/common/blockpost";
 import { ToggleNav } from "@/components/layout/Navbar";
 import CreatePost from "@/components/home-page/createPost";
-import React , {useState} from "react";
+import React , {useEffect, useState} from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuestions } from "@/redux/slices/publicSlice";
+import { getCookie, hasCookie } from "cookies-next";
 
 const index = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,47 @@ const index = () => {
       comment: 2
     }
   ]
+
+  const token = getCookie('token');
+
+  const requestOptions = {
+    method: 'GET',
+    headers: { 
+      'Content-Type': 'application/json',
+      'token': [token]
+    },
+  };
+
+  const postSignIN = async () => {
+    await fetch('http://localhost:8080/api/v2/classrooms', requestOptions)
+      .then(response => {
+        response.json()
+            .then(data => {
+              console.log("First Name = " + first)
+              console.log("Last Name = " + last)
+              console.log("Nick Name = " + nick)
+              console.log("Email = " + email)
+              console.log("Password = " + pass)
+              console.log("Phone = " + phone)
+              console.log("Type = " + type)
+              console.log(data)
+              postLogin();
+            });
+    })
+    .catch (error => {
+      console.error(error);
+    }) 
+  }
+
+  const [isLoading, setLoading] = useState(false);
+  useEffect(() => {
+    if (isLoading) {
+        postSignIN().then(() => {
+            setLoading(false);
+        });
+    }
+    setLoading(false)
+  }, [isLoading]);
 
   return (
     <Layout>

@@ -30,7 +30,7 @@ const index = () => {
     };
   
     const postSignIN = async () => {
-      await fetch('http://localhost:8080/auth/signup', requestOptions)
+      await fetch('http://localhost:8080/auth/register', requestOptions)
         .then(response => {
           response.json()
               .then(data => {
@@ -60,7 +60,7 @@ const index = () => {
           "email": email,
           "password" : pass,
         })
-      };
+    };
 
     const postLogin = async () => {
         await fetch('http://localhost:8080/auth/login', requestOptionsLogin)
