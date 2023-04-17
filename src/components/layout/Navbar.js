@@ -4,14 +4,36 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 import NewClass from "@/components/home-page/NewClass";
+import { useEffect } from "react";
+import { getCookie } from "cookies-next";
 
 const Navbar = () => {
+  const token = getCookie('token');
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', 'token': [token], 'Access-Control-Allow-Origin':'localhost:8080' },
+  };
+
+  const getAllClass = async () => {
+    await fetch('http://192.168.1.132/api/v2/classrooms', requestOptions)
+      .then(response => {
+        response.json()
+            .then(data => {
+              classData.push(data);
+              console.log(data);
+            });
+    })
+    .catch (error => {
+      console.error(error);
+    }) 
+  }  
   const classData = [
     {class: "SF340"},
     {class: "SF341"},
     {class: "SF342"},
     {class: "SF343"},
   ]
+
   return (
     <nav className="fixed left-10 z-10">
       <div className="flex flex-col bg-242527 text-white rounded-lg p-3 w-48">
@@ -41,6 +63,7 @@ const Navbar = () => {
             <Link
               href={"/class"}
               className="flex justify-center rounded-lg hover:bg-08D9D6"
+              onClick={()=>getAllClass()}
             >
               <button className="p-2 ">{items.class}</button>
             </Link>

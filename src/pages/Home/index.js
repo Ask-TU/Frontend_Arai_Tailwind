@@ -84,6 +84,31 @@ const index = () => {
     setLoading(false)
   }, [isLoading]);
 
+  const requestOptionsTest = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', 'token': [token], 'Access-Control-Allow-Origin':'localhost:8080' },
+  };
+
+  const getAllClass = async () => {
+    await fetch('http://192.168.1.132/api/v2/classrooms', requestOptionsTest)
+      .then(response => {
+        response.json()
+            .then(data => {
+              classData.push(data);
+              console.log(data);
+            });
+    })
+    .catch (error => {
+      console.error(error);
+    }) 
+  }  
+  const classData = [
+    {class: "SF340"},
+    {class: "SF341"},
+    {class: "SF342"},
+    {class: "SF343"},
+  ]
+
   return (
     <Layout>
       <div className="m-8">
@@ -102,6 +127,7 @@ const index = () => {
               </Link>
             ))}
           </div>
+          <button onClick={()=>getAllClass()}>Test Get Class Data</button>
         </div>
       </div>
     </Layout>
