@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuestions } from "@/redux/slices/publicSlice";
 import { getCookie, hasCookie } from "cookies-next";
+import axios from "axios";
 
 const index = () => {
   const dispatch = useDispatch();
@@ -45,69 +46,24 @@ const index = () => {
 
   const token = getCookie('token');
 
-  const requestOptions = {
-    method: 'GET',
-    headers: { 
-      'Content-Type': 'application/json',
-      'token': [token]
-    },
-  };
-
-  const postSignIN = async () => {
-    await fetch('http://localhost:8080/api/v2/classrooms', requestOptions)
-      .then(response => {
-        response.json()
-            .then(data => {
-              console.log("First Name = " + first)
-              console.log("Last Name = " + last)
-              console.log("Nick Name = " + nick)
-              console.log("Email = " + email)
-              console.log("Password = " + pass)
-              console.log("Phone = " + phone)
-              console.log("Type = " + type)
-              console.log(data)
-              postLogin();
-            });
-    })
-    .catch (error => {
-      console.error(error);
-    }) 
-  }
-
-  const [isLoading, setLoading] = useState(false);
-  useEffect(() => {
-    if (isLoading) {
-        postSignIN().then(() => {
-            setLoading(false);
-        });
+  async function getAllClass() {
+    axios({
+    url:'http://localhost:8080/api/v2/classrooms',
+    method:"GET",
+    mode: 'no-cors',
+    headers:{
+        "Access-Control-Allow-Origin": '*',
+        "token": token
     }
-    setLoading(false)
-  }, [isLoading]);
-
-  const requestOptionsTest = {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json', 'token': [token], 'Access-Control-Allow-Origin':'localhost:8080' },
-  };
-
-  const getAllClass = async () => {
-    await fetch('http://192.168.1.132/api/v2/classrooms', requestOptionsTest)
-      .then(response => {
-        response.json()
-            .then(data => {
-              classData.push(data);
-              console.log(data);
-            });
     })
-    .catch (error => {
-      console.error(error);
-    }) 
-  }  
-  const classData = [
-    {class: "SF340"},
-    {class: "SF341"},
-    {class: "SF342"},
-    {class: "SF343"},
-  ]
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err =>{
+        console.log(err);
+    })
+  }
+  
 
   return (
     <Layout>
@@ -127,7 +83,8 @@ const index = () => {
               </Link>
             ))}
           </div>
-          <button onClick={()=>getAllClass()}>Test Get Class Data</button>
+          <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
+          <div className="text-white">{token}</div>
         </div>
       </div>
     </Layout>
