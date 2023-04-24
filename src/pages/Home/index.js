@@ -48,7 +48,7 @@ const index = () => {
 
   async function getAllClass() {
     axios({
-    url:'http://localhost:8080/api/v2/classrooms',
+    url:'/api/getAllClass',
     method:"GET",
     mode: 'no-cors',
     headers:{
