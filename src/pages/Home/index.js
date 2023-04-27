@@ -12,7 +12,7 @@ import axios from "axios";
 
 const index = () => {
   const dispatch = useDispatch();
-  const publicSlice = useSelector((state) => state.publicData);
+  const publicSlice = useSelector((state) => state.publicData.token);
   const BlockPostData = [
     {
       username: "Username",
@@ -45,19 +45,17 @@ const index = () => {
   ]
 
   const token = getCookie('token');
+  const tokenString = toString(token);
+  const [path, setPath] = useState("");
+  const [data, setData] = useState([]);
 
   async function getAllClass() {
-    axios({
-    url:'/api/getAllClass',
-    method:"GET",
-    mode: 'no-cors',
-    headers:{
-        "Access-Control-Allow-Origin": '*',
-        "token": token
-    }
-    })
-    .then(res => {
-        console.log(res);
+    fetch(path)
+    .then((res) => res.json())
+    .then((data) => {
+        setData(data)
+        console.log(data)
+        setLoading(false)
     })
     .catch(err =>{
         console.log(err);
@@ -67,8 +65,10 @@ const index = () => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     if (isLoading) {
-      dispatch(setToken(token));
-      console.log(publicSlice.token);
+      // dispatch(setToken(token));
+      // console.log(publicSlice.token);
+      setPath('/api/getAllClass/' + token)
+      console.log(tokenString + "this is token string")
       setLoading(false);
     }
   }, [isLoading]);
@@ -92,7 +92,7 @@ const index = () => {
             ))}
           </div>
           <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          <div className="text-white">{token}</div>
+          <div className="text-white">{'/token=>/'+data}</div>
         </div>
       </div>
     </Layout>

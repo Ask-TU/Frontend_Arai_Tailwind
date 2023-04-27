@@ -6,7 +6,7 @@ export default function Game() {
 
     const fetchData = async () => {
         setLoading(true)
-        fetch('/api/hello')
+        fetch('/api/getAllClass')
             .then((res) => res.json())
             .then((data) => {
                 setData(data)
@@ -19,7 +19,7 @@ export default function Game() {
         <div>
             <button onClick={fetchData} className='bg-white'>Fetch Data</button>
             {
-                data ? <p>Loading...</p> : <p>{data.class_items}</p>
+                data ? <p>Loading...</p> : <p>{data}</p>
             }
         </div>
     )
