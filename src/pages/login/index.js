@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthState } from '@/redux/slices/publicSlice';
+import { setAuthState, setToken } from '@/redux/slices/publicSlice';
 
 const index = () => {
     const router = useRouter();
     const dispath = useDispatch();
+    const token = useSelector((state) => state.publicData.token);
 
     //user handle
     const [email, setEmail] = useState("");
@@ -36,6 +37,8 @@ const index = () => {
                         setCookie('token', data.token);
                         console.log(data.token) 
                         console.log("Set Cookie!")
+                        // dispath(setToken(data.token))
+                        // console.log(token)
                     }
                     console.log(data)
                     console.log(data.token)

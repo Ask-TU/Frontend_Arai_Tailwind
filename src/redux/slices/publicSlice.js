@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialValue = {
   questions: {},
   loading: false,
-  authState: false
+  authState: false,
+  token: ''
 };
 
 const publicSlice = createSlice({
@@ -19,9 +20,12 @@ const publicSlice = createSlice({
     setAuthState(state, action) {
       state.authState = action.payload;
     },
+    setToken(state, action) {
+      state.token = action.payload;
+    }
   },
   extraReducers: (builder) => {},
 });
 
-export const { setQuestions, setLoading, setAuthState } = publicSlice.actions;
+export const { setQuestions, setLoading, setAuthState, setToken } = publicSlice.actions;
 export default publicSlice.reducer;

@@ -6,7 +6,7 @@ import CreatePost from "@/components/home-page/createPost";
 import React , {useEffect, useState} from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuestions } from "@/redux/slices/publicSlice";
+import { setQuestions, setToken } from "@/redux/slices/publicSlice";
 import { getCookie, hasCookie } from "cookies-next";
 import axios from "axios";
 
@@ -63,7 +63,15 @@ const index = () => {
         console.log(err);
     })
   }
-  
+
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    if (isLoading) {
+      dispatch(setToken(token));
+      console.log(publicSlice.token);
+      setLoading(false);
+    }
+  }, [isLoading]);
 
   return (
     <Layout>

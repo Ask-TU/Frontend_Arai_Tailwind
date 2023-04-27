@@ -6,9 +6,23 @@ import Link from "next/link";
 import NewClass from "@/components/home-page/NewClass";
 import { useEffect } from "react";
 import { getCookie } from "cookies-next";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "@/redux/slices/publicSlice";
 
 const Navbar = () => {
   const token = getCookie('token');
+  const dispatch = useDispatch();
+  const publicSlice = useSelector((state) => state.publicData);
+
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    if (isLoading) {
+      dispatch(setToken(token));
+      console.log(publicSlice.token);
+      setLoading(false);
+    }
+  }, [isLoading]);
+
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json', 'token': [token], 'Access-Control-Allow-Origin':'localhost:8080' },
