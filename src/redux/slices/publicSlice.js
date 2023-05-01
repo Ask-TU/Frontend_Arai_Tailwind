@@ -4,7 +4,8 @@ const initialValue = {
   questions: {},
   loading: false,
   authState: false,
-  token: ''
+  token: '',
+  data: null,
 };
 
 const publicSlice = createSlice({
@@ -22,10 +23,13 @@ const publicSlice = createSlice({
     },
     setToken(state, action) {
       state.token = action.payload;
+    },
+    setData(state, action) {
+      state.data = action.payload;
     }
   },
   extraReducers: (builder) => {},
 });
 
-export const { setQuestions, setLoading, setAuthState, setToken } = publicSlice.actions;
+export const { setQuestions, setLoading, setAuthState, setToken, setData } = publicSlice.actions;
 export default publicSlice.reducer;

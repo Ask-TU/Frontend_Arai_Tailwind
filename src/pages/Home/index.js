@@ -12,7 +12,7 @@ import axios from "axios";
 
 const index = () => {
   const dispatch = useDispatch();
-  const publicSlice = useSelector((state) => state.publicData.token);
+  const publicSlice = useSelector((state) => state.publicData);
   const BlockPostData = [
     {
       username: "Username",
@@ -53,8 +53,8 @@ const index = () => {
     fetch(path)
     .then((res) => res.json())
     .then((data) => {
-        setData(data)
-        console.log(data)
+        setData(data.class_items)
+        console.log(data.class_items)
         setLoading(false)
     })
     .catch(err =>{
@@ -80,7 +80,7 @@ const index = () => {
 
   }, [isLoading]);
 
-  if (!data) return <Layout><p className="text-white">No class data</p></Layout>
+  // if (!data) return <Layout><p className="text-white">No class data</p></Layout>
 
   return (
     <Layout>
@@ -101,7 +101,7 @@ const index = () => {
             ))}
           </div>
           <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          <div className="text-white">{data}</div>
+          <div className="text-white">{publicSlice.data}</div>
         </div>
       </div>
     </Layout>

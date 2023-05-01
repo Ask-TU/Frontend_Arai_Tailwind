@@ -14,17 +14,17 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const publicSlice = useSelector((state) => state.publicData);
 
-  const [path, setPath] = useState("");
-  const [isLoading, setLoading] = useState(true);
-  useEffect(() => {
-    if (isLoading) {
-      dispatch(setToken(token));
-      console.log(publicSlice.token);
-      setPath('/api/getAllClass/' + token);
-      getAllClass();
-      setLoading(false);
-    }
-  }, [isLoading]);
+  // const [path, setPath] = useState("");
+  // const [isLoading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   if (isLoading) {
+  //     dispatch(setToken(token));
+  //     console.log(publicSlice.token);
+  //     setPath('/api/getAllClass/' + token);
+  //     getAllClass();
+  //     setLoading(false);
+  //   }
+  // }, [isLoading]);
 
   const requestOptions = {
     method: 'GET',
