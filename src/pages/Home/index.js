@@ -47,7 +47,7 @@ const index = () => {
   const token = getCookie('token');
   const tokenString = toString(token);
   const [path, setPath] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   async function getAllClass() {
     fetch(path)
@@ -101,7 +101,9 @@ const index = () => {
             ))}
           </div>
           <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          <div className="text-white">{publicSlice.data}</div>
+          {/* <div className="text-white">{data.map((items) => (
+            <p>{items}</p>
+          ))}</div> */}
         </div>
       </div>
     </Layout>
