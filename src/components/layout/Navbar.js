@@ -8,11 +8,12 @@ import { useEffect } from "react";
 import { getCookie } from "cookies-next";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken } from "@/redux/slices/publicSlice";
+import { setClass } from "@/redux/slices/fetchSlice";
 
 const Navbar = () => {
   const token = getCookie('token');
   const dispatch = useDispatch();
-  const publicSlice = useSelector((state) => state.publicData);
+  // const classData = useSelector((state) => state.fetchData.class);
 
   // const [path, setPath] = useState("");
   // const [isLoading, setLoading] = useState(true);
@@ -25,31 +26,57 @@ const Navbar = () => {
   //     setLoading(false);
   //   }
   // }, [isLoading]);
+  const [path, setPath] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [classData, setClassData] = useState([])
+  useEffect(() => {
+    setPath('/api/getAllClass/' + token);  
+    console.log("set patch!")
+    const getAllClass = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(path, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        })
+        const json = await response.json()
+        // dispatch(setClass(json))
+        setClassData(json)
+        console.log(json)
+      } catch(err) {
+        console.log(err)
+      } finally {
+        console.log("get class data!")
+        setLoading(false)
+      }
+    }
+    getAllClass();
+  }, []);
 
   const requestOptions = {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   };
 
-  const getAllClass = async () => {
-    await fetch(path, requestOptions)
-      .then(response => {
-        response.json()
-            .then(data => {
-              classData.push(data);
-              console.log(data);
-            });
-    })
-    .catch (error => {
-      console.error(error);
-    }) 
-  }  
-  const classData = [
-    {class: "SF340"},
-    {class: "SF341"},
-    {class: "SF342"},
-    {class: "SF343"},
-  ]
+  // const getAllClass = async () => {
+  //   await fetch(path, requestOptions)
+  //     .then(response => {
+  //       response.json()
+  //           .then(data => {
+  //             classData.push(data);
+  //             console.log(data);
+  //           });
+  //   })
+  //   .catch (error => {
+  //     console.error(error);
+  //   }) 
+  // }  
+  // const classData = [
+  //   {class: "SF340"},
+  //   {class: "SF341"},
+  //   {class: "SF342"},
+  //   {class: "SF343"},
+  // ]
 
   return (
     <nav className="fixed left-10 z-10">
@@ -76,12 +103,12 @@ const Navbar = () => {
       <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
         <p className="absolute top-3 left-5 text-sm">Class</p>
         <div className="mt-6 flex flex-col">
-          {classData.map((items)=>(
+          {classData && classData.map((items)=>(
             <Link
               href={"/class"}
               className="flex justify-center rounded-lg hover:bg-08D9D6"
             >
-              <button className="p-2 ">{items.class}</button>
+              <button className="p-2" key={items.total_count}>{items.total_count}</button>
             </Link>
           ))}
         </div>

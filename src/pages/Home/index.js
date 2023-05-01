@@ -62,37 +62,44 @@ const index = () => {
   //   })
   // }
 
-  const getAllClass = async () => {
-    try {
-      const response = await fetch(path);
-      const json = await response.json();
-      setData(json);
-      console.log(json);
-    } catch(err) {
-      console.log(err);
-    }
-  }
+
 
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    if(isLoading){
-      // dispatch(setToken(token));
-      // console.log(publicSlice.token);
-      setPath('/api/getAllClass/' + token)
-      console.log(tokenString + "this is token string")
-      fetch(path)
-      .then((res) => res.json())
-        .then((data) => {
-          setData(data)
-          console.log(data)
-          setLoading(false)
-      })
+    // if(isLoading){
+    //   // dispatch(setToken(token));
+    //   // console.log(publicSlice.token);
+    //   setPath('/api/getAllClass/' + token)
+    //   console.log(tokenString + "this is token string")
+    //   fetch(path)
+    //   .then((res) => res.json())
+    //     .then((data) => {
+    //       setData(data)
+    //       console.log(data)
+    //       setLoading(false)
+    //   })
+    // }    
+    setPath('/api/getAllClass/' + token);  
+    console.log("set patch!")
+    const getAllClass = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(path)
+        const json = await response.json()
+        setData(json)
+        console.log(json)
+      } catch(err) {
+        console.log(err)
+      } finally {
+        console.log("get class data!")
+        setLoading(false)
+      }
     }
-
-  }, [isLoading]);
+    getAllClass();
+  }, []);
 
   // if (!data) return <Layout><p className="text-white">No class data</p></Layout>
-
+  if (isLoading) return <p>Loading...</p>
   return (
     <Layout>
       <div className="m-8">
@@ -111,10 +118,9 @@ const index = () => {
               </Link>
             ))}
           </div>
-          <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          <div className="text-white">{data.map((items) => (
-            <p>{items.class_items} {items.total_count}</p>
-          ))}
+          {/* <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button> */}
+          <div className="text-white">
+            {data && data.map((da) => <div>{da.class_items}</div>)}
           </div>
         </div>
       </div>
