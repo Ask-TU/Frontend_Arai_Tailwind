@@ -49,17 +49,28 @@ const index = () => {
   const [path, setPath] = useState("");
   const [data, setData] = useState([]);
 
-  async function getAllClass() {
-    fetch(path)
-    .then((res) => res.json())
-    .then((data) => {
-        setData(data.class_items)
-        console.log(data.class_items)
-        setLoading(false)
-    })
-    .catch(err =>{
-        console.log(err);
-    })
+  // async function getAllClass() {
+  //   fetch(path)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //       setData(data.class_items)
+  //       console.log(data.class_items)
+  //       setLoading(false)
+  //   })
+  //   .catch(err =>{
+  //       console.log(err);
+  //   })
+  // }
+
+  const getAllClass = async () => {
+    try {
+      const response = await fetch(path);
+      const json = await response.json();
+      setData(json);
+      console.log(json);
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   const [isLoading, setLoading] = useState(true);
@@ -101,9 +112,10 @@ const index = () => {
             ))}
           </div>
           <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          {/* <div className="text-white">{data.map((items) => (
-            <p>{items}</p>
-          ))}</div> */}
+          <div className="text-white">{data.map((items) => (
+            <p>{items.class_items} {items.total_count}</p>
+          ))}
+          </div>
         </div>
       </div>
     </Layout>
