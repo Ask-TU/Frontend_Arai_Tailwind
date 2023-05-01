@@ -47,7 +47,7 @@ const index = () => {
   const token = getCookie('token');
   const tokenString = toString(token);
   const [path, setPath] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   async function getAllClass() {
     fetch(path)
@@ -64,14 +64,23 @@ const index = () => {
 
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    if (isLoading) {
+    if(isLoading){
       // dispatch(setToken(token));
       // console.log(publicSlice.token);
       setPath('/api/getAllClass/' + token)
       console.log(tokenString + "this is token string")
-      setLoading(false);
+      fetch(path)
+      .then((res) => res.json())
+        .then((data) => {
+          setData(data)
+          console.log(data)
+          setLoading(false)
+      })
     }
+
   }, [isLoading]);
+
+  if (!data) return <Layout><p className="text-white">No class data</p></Layout>
 
   return (
     <Layout>
@@ -92,7 +101,7 @@ const index = () => {
             ))}
           </div>
           <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          <div className="text-white">{'/token=>/'+data}</div>
+          <div className="text-white">{data}</div>
         </div>
       </div>
     </Layout>

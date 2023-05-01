@@ -20,7 +20,8 @@ const Navbar = () => {
     if (isLoading) {
       dispatch(setToken(token));
       console.log(publicSlice.token);
-      setPath('/api/getAllClass/' + token)
+      setPath('/api/getAllClass/' + token);
+      getAllClass();
       setLoading(false);
     }
   }, [isLoading]);
@@ -79,7 +80,6 @@ const Navbar = () => {
             <Link
               href={"/class"}
               className="flex justify-center rounded-lg hover:bg-08D9D6"
-              onClick={()=>getAllClass()}
             >
               <button className="p-2 ">{items.class}</button>
             </Link>
