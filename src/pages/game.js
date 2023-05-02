@@ -9,7 +9,7 @@ export default function Game() {
 
         try {
             const body = {
-                "subject_name": "SF342 Software Construction 7",
+                "subject_name": "SF342 Software Construction 88",
                 "class_owner": "643533058b6dc87dc5c10272",
                 "section": "76001",
                 "members": [],
