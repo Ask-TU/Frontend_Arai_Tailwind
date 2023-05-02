@@ -13,7 +13,7 @@ const question = () => {
       <Layout>
         <div className="m-8">
           <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
-            <Questionblock username = {publicSlice.questions.username} dateTime = {publicSlice.questions.dateTime} titleQuestion = {publicSlice.questions.titleQuestion} questionDetail = {""} classTag = {publicSlice.questions.classTag}/>
+            <Questionblock username = {publicSlice.questions.username} dateTime = {publicSlice.questions.dateTime} titleQuestion = {publicSlice.token} questionDetail = {""} classTag = {publicSlice.questions.classTag}/>
             <div className="pt-5 w-full">
               <Typeanswer />
             </div>

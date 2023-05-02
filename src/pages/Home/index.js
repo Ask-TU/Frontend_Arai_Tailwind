@@ -6,7 +6,7 @@ import CreatePost from "@/components/home-page/createPost";
 import React , {useEffect, useState} from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuestions } from "@/redux/slices/publicSlice";
+import { setQuestions, setToken } from "@/redux/slices/publicSlice";
 import { getCookie, hasCookie } from "cookies-next";
 import axios from "axios";
 
@@ -45,26 +45,61 @@ const index = () => {
   ]
 
   const token = getCookie('token');
+  const tokenString = toString(token);
+  const [path, setPath] = useState("");
+  const [data, setData] = useState([]);
 
-  async function getAllClass() {
-    axios({
-    url:'http://localhost:8080/api/v2/classrooms',
-    method:"GET",
-    mode: 'no-cors',
-    headers:{
-        "Access-Control-Allow-Origin": '*',
-        "token": token
+  // async function getAllClass() {
+  //   fetch(path)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //       setData(data.class_items)
+  //       console.log(data.class_items)
+  //       setLoading(false)
+  //   })
+  //   .catch(err =>{
+  //       console.log(err);
+  //   })
+  // }
+
+
+
+  const [isLoading, setLoading] = useState(true);
+  useEffect(() => {
+    // if(isLoading){
+    //   // dispatch(setToken(token));
+    //   // console.log(publicSlice.token);
+    //   setPath('/api/getAllClass/' + token)
+    //   console.log(tokenString + "this is token string")
+    //   fetch(path)
+    //   .then((res) => res.json())
+    //     .then((data) => {
+    //       setData(data)
+    //       console.log(data)
+    //       setLoading(false)
+    //   })
+    // }    
+    setPath('/api/getAllClass/' + token);  
+    console.log("set patch!")
+    const getAllClass = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(path)
+        const json = await response.json()
+        setData(json)
+        console.log(json)
+      } catch(err) {
+        console.log(err)
+      } finally {
+        console.log("get class data!")
+        setLoading(false)
+      }
     }
-    })
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err =>{
-        console.log(err);
-    })
-  }
-  
+    getAllClass();
+  }, []);
 
+  // if (!data) return <Layout><p className="text-white">No class data</p></Layout>
+  if (isLoading) return <p>Loading...</p>
   return (
     <Layout>
       <div className="m-8">
@@ -83,8 +118,10 @@ const index = () => {
               </Link>
             ))}
           </div>
-          <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button>
-          <div className="text-white">{token}</div>
+          {/* <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button> */}
+          <div className="text-white">
+            {data && data.map((da) => <div>{da.class_items}</div>)}
+          </div>
         </div>
       </div>
     </Layout>
