@@ -9,7 +9,7 @@ export default function Game() {
 
         try {
             const body = {
-                "subject_name": "SF342 Software Construction 88",
+                "subject_name": "SF342 Software Construction 888",
                 "class_owner": "643533058b6dc87dc5c10272",
                 "section": "76001",
                 "members": [],
@@ -19,7 +19,7 @@ export default function Game() {
             const request = requests();
             const option = options(body);
 
-            const response = await fetch(request.createClass, option);
+            const response = await axios(request.createClass, option);
             const data = response.data;
             console.log(data);
 

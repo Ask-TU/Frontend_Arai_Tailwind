@@ -9,7 +9,7 @@ export const options = (body) => {
                     'Content-Type': 'application/json',
                     'token': TOKEN ?? ''
                 },
-                body: JSON.stringify({ body })
+                body: JSON.stringify(body)
             }
         case body:
             return {
@@ -23,13 +23,14 @@ export const options = (body) => {
 }
 
 
-export const requests = (params, params2) => {
+export const requests = (params, child) => {
 
     return {
         createClass: `${BASE_URL}/api/v2/classrooms`,
-        joinClass: `${BASE_URL}/api/v2/classrooms/${params}/join/${params2}`,
+        joinClass: `${BASE_URL}/api/v2/classrooms/join/${params}/${child}`,
         createQuestion: `${BASE_URL}/api/v2/classrooms/${params}/questions`,
-        createAnswer: `${BASE_URL}/api/v2/classrooms/questions/${params2}/answers`,
+        createAnswer: `${BASE_URL}/api/v2/classrooms/questions/${params}/answers`,
+
 
     }
 
