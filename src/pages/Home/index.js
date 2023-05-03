@@ -13,10 +13,11 @@ const index = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const classID = "6452a336612cf493afe90b30"
   const getAllClass = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/fetchAllQuestion/" + "64528e1a12255bcb154b7cf8");
+      const response = await fetch("/api/fetchAllQuestion/" + classID);
       const json = await response.json();
       setData(json.result.data);
       console.log(json.result.data);
@@ -41,7 +42,7 @@ const index = () => {
             <ToggleNav />
           </div>
           <div className="border-b border-636363 pb-5 m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
-            <CreatePost classID={"64528e1a12255bcb154b7cf8"}/>
+            <CreatePost classID={classID}/>
           </div>
         </div>
       </Layout>
@@ -56,7 +57,7 @@ const index = () => {
             <ToggleNav />
           </div>
           <div className="border-b border-636363 pb-5">
-            <CreatePost />
+            <CreatePost classID={classID}/>
           </div>
           <div className="pt-5">
             {data.map((items) => (

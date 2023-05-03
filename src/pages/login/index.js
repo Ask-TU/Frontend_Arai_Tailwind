@@ -25,7 +25,7 @@ const index = () => {
             const response = await fetch('http://localhost:8080/auth/login', requestOptions);
             const json = await response.json();
             if (json.token == null || json.token == undefined || json.token == " ") {
-                console.log()
+                console.log("No Token")
             } else {
                 console.log(json);
                 setCookie('token', json.token);
