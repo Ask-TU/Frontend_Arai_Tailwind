@@ -66,6 +66,7 @@ const index = () => {
                         setCookie('token', data.token);
                         console.log(data.token) 
                         console.log("Set Cookie!")
+                        setCookie('userID', data.user_id)
                     }
                     router.push('/')
                 });

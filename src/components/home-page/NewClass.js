@@ -13,10 +13,11 @@ const NewClass = () => {
     headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
     body: JSON.stringify({
         "subject_name": subject_name,
-        "owner": userID,
+        "class_owner": userID,
         "tag": tag,
         "section": section,
-        "description": description
+        "description": description,
+        "members":[userID],
     })
   };
   const createClass = async () => {

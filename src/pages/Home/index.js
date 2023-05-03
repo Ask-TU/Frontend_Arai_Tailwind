@@ -17,7 +17,7 @@ const index = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "/api/fetchAllQuestion/" + "643bfd04e7211dc61a4e23ba"
+        "/api/fetchAllQuestion/" + "64526c8f153bd2afd7470d13"
       );
       const json = await response.json();
       setData(json.result.data);
