@@ -1,6 +1,37 @@
+import { getCookie } from "cookies-next";
 import React, { useState } from "react";
 
 const NewClass = () => {
+  const token = getCookie('token')
+  const userID = getCookie('userID');
+  const [subject_name, setSubject_name] = useState("")
+  const [tag, setTag] = useState("")
+  const [section, setSection] = useState("")
+  const [description, setDescription] = useState("")
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
+    body: JSON.stringify({
+        "subject_name": subject_name,
+        "owner": userID,
+        "tag": tag,
+        "section": section,
+        "description": description
+    })
+  };
+  const createClass = async () => {
+    await fetch('http://localhost:8080/api/v2/classrooms', requestOptions)
+      .then(response => {
+          response.json()
+              .then(data => {
+                console.log(data)
+              });
+      })
+      .catch(error => {
+          console.error(error);
+      })
+    setIsOpen(!isOpen);
+  }
   const [isOpen, setIsOpen] = useState(false);
   const togglemodal = () => {
     setIsOpen(!isOpen);
@@ -46,6 +77,7 @@ const NewClass = () => {
                     placeholder="Class Name"
                     type="text"
                     name="text"
+                    onChange={(e)=>setSubject_name(e.target.value)}
                   />
                 </label>
 
@@ -64,6 +96,7 @@ const NewClass = () => {
                     placeholder="Class Tag"
                     type="text"
                     name="text"
+                    onChange={(e)=>setTag(e.target.value)}
                   />
                 </label>
 
@@ -82,6 +115,7 @@ const NewClass = () => {
                     placeholder="Sec"
                     type="text"
                     name="text"
+                    onChange={(e)=>setSection(e.target.value)}
                   />
                 </label>
 
@@ -98,6 +132,7 @@ const NewClass = () => {
                     placeholder="Description"
                     type="text"
                     name="text"
+                    onChange={(e)=>setDescription(e.target.value)}
                   />
                 </label>
 
@@ -107,7 +142,7 @@ const NewClass = () => {
                     hover:bg-white 
                     hover:text-08D9D6
                     active:bg-white"
-                    onClick={() => togglemodal()}
+                    onClick={() => createClass()}
                   >
                     Create
                   </button>

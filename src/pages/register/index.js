@@ -12,7 +12,6 @@ const index = () => {
     const [pass, setPass] = useState("");
     const [phone, setPhone] = useState("");
     const [stdID, setStdID] = useState("");
-    const type = useState("USER");
   
     const requestOptions = {
       method: 'POST',
@@ -21,11 +20,12 @@ const index = () => {
         "first_name": first,
         "last_name": last,
         "nick_name" : nick,
-        "email": email,
         "password" : pass,
-        "phone": phone,
+        "email": email,
+        "phone": phone,        
+        "User_type": "USER",
         "student_id": stdID,
-        "User_type": type
+        "classrooms": []
       })
     };
   
@@ -40,19 +40,13 @@ const index = () => {
                 console.log("Email = " + email)
                 console.log("Password = " + pass)
                 console.log("Phone = " + phone)
-                console.log("Type = " + type)
                 postLogin();
               });
       })
       .catch (error => {
-        if (error.message == 'Error: You need to specify name or key when calling navigate with an object as the argument. See https://reactnavigation.org/docs/navigation-actions#navigate for usage.') {
-        }
         console.error(error);
       }) 
     }
-
-
-
     const requestOptionsLogin = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -68,29 +62,15 @@ const index = () => {
             response.json()
                 .then(data => {
                     if(data.token == null || data.token == undefined || data.token == " ") {
-                        // setCookie('token', data.token);
-                        // console.log(data.token) 
-                        // console.log("Set Cookie!")
                     } else {
                         setCookie('token', data.token);
                         console.log(data.token) 
                         console.log("Set Cookie!")
                     }
-                    console.log(data)
-                    console.log(data.token)
-                    console.log(data.first_name)
-                    console.log(data.last_name)
-                    console.log(data.nick_name)
-                    console.log(data.phone)
-                    console.log(data.classrooms)
-                    console.log("Email = " + email)
-                    console.log("Password = " + pass)
                     router.push('/')
                 });
         })
         .catch (error => {
-          if (error.message == 'Error: You need to specify name or key when calling navigate with an object as the argument. See https://reactnavigation.org/docs/navigation-actions#navigate for usage.') {
-          }
           console.error(error);
         }) 
       }
