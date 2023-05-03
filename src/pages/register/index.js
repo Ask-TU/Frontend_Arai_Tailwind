@@ -28,24 +28,15 @@ const index = () => {
         "classrooms": []
       })
     };
-  
     const postSignIN = async () => {
-      await fetch('http://localhost:8080/auth/register', requestOptions)
-        .then(response => {
-          response.json()
-              .then(data => {
-                console.log("First Name = " + first)
-                console.log("Last Name = " + last)
-                console.log("Nick Name = " + nick)
-                console.log("Email = " + email)
-                console.log("Password = " + pass)
-                console.log("Phone = " + phone)
-                postLogin();
-              });
-      })
-      .catch (error => {
-        console.error(error);
-      }) 
+        try {
+            const response = await fetch('http://localhost:8080/auth/register', requestOptions);
+            const json = await response.json();
+            console.log(json);
+            await postLogin();
+        } catch (err) {
+            console.log(err)
+        }    
     }
     const requestOptionsLogin = {
         method: 'POST',
@@ -55,7 +46,6 @@ const index = () => {
           "password" : pass,
         })
     };
-
     const postLogin = async () => {
         await fetch('http://localhost:8080/auth/login', requestOptionsLogin)
           .then(response => {

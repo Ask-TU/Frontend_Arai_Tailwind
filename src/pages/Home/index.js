@@ -34,7 +34,7 @@ const index = () => {
   if (!data)
     return (
       <Layout>
-        <p className="text-white text-center text-2xl">No class data</p>
+        <p className="text-white text-center text-2xl">No data</p>
         <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
           <div className="flex">
             <Search />
@@ -44,7 +44,6 @@ const index = () => {
             <CreatePost classID={"64528e1a12255bcb154b7cf8"}/>
           </div>
         </div>
-
       </Layout>
     );
   if (isLoading) return <p>Loading...</p>;
