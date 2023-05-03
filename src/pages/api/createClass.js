@@ -2,15 +2,15 @@ import axios from 'axios';
 import { requests, options } from '@/utils/POST';
 
 export default async function handler(req, res) {
-    if (req.method == 'POST') {
+    if (req.method === 'POST') {
         try {
-            const body = req.body
-            console.log(req.body);
-            const request = requests();
-            const option = options(body);
+            const { body } = req;
+            console.log(body);
 
-            const response = await axios(request.createClass, option);
-            const data = response.data;
+            const { createClass } = requests();
+            const createCourseOptions = options(body);
+
+            const { data } = await axios.post(createClass, createCourseOptions);
             console.log(data);
 
             res.status(200).json(data);

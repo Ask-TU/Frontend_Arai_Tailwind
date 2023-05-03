@@ -1,27 +1,24 @@
 import { TOKEN, BASE_URL } from '@/utils/index';
 
 export const options = (body) => {
-    switch (body) {
-        case !body:
-            return {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'token': TOKEN ?? ''
-                },
-                body: JSON.stringify({ body })
-            }
-        case body:
-            return {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'token': TOKEN ?? ''
-                }
-            }
+    return {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'token': TOKEN ?? ''
+        }
     }
 }
-
+export const optionswithBody = (body) => {
+    return {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'token': TOKEN ?? ''
+        },
+        body: JSON.stringify(body)
+    }
+}
 
 export const requests = (params) => {
 
