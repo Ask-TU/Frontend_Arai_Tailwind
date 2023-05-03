@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { requests, options } from '@/utils/POST';
+import { requests, options, optionswithBody } from '@/utils/POST';
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
             console.log(body);
 
             const { createClass } = requests();
-            const createCourseOptions = options(body);
+            const createCourseOptions = optionswithBody(body);
 
             const { data } = await axios.post(createClass, createCourseOptions);
             console.log(data);

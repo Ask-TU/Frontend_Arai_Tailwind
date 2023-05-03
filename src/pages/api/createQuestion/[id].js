@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { requests, options, optionswithBody } from '@/utils/POST';
+import { requests, optionswithBody } from '@/utils/POST';
 
 export default async function handler(req, res) {
     if (req.method == 'POST') {
