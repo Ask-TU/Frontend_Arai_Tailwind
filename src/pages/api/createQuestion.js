@@ -5,12 +5,13 @@ export default async function handler(req, res) {
     if (req.method == 'POST') {
         try {
             const { body } = req;
+            const { id } = req.query;
             console.log(body);
 
-            const { createClass } = requests();
+            const { createQuestion } = requests(id);
             const createCourseOptions = options(body);
 
-            const { data } = await axios.post(createClass, createCourseOptions);
+            const { data } = await axios.post(createQuestion, createCourseOptions);
             console.log(data);
 
             res.status(200).json(data);
