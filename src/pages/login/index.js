@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from "react-redux";
-import { setAuthState, setData, setToken } from '@/redux/slices/publicSlice';
+import { useDispatch } from "react-redux";
 
 const index = () => {
     const router = useRouter();
-    const dispath = useDispatch();
-    // const token = useSelector((state) => state.publicData.token);
 
     //user handle
     const [email, setEmail] = useState("");

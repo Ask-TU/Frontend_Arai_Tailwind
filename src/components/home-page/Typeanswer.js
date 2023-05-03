@@ -29,7 +29,6 @@ const Typeanswer = () => {
     } catch(err) {
       console.log(err);
     }
-    
   }
   return (
     <div className="flex m-auto text-white p-4 rounded-lg bg-242527">

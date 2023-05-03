@@ -1,7 +1,6 @@
 import Image from "next/image";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
 import React, { useState } from "react";
-import axios from "axios";
 import { getCookie } from "cookies-next";
 
 const CreatePost = ({classID}) => {

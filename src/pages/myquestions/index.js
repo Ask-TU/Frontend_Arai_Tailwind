@@ -5,13 +5,12 @@ import { ToggleNav } from "@/components/layout/Navbar";
 import CreatePost from "@/components/home-page/createPost";
 import React , {useEffect, useState} from "react";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { setQuestions, setToken } from "@/redux/slices/publicSlice";
+import { useDispatch } from "react-redux";
+import { setQuestions } from "@/redux/slices/publicSlice";
 import { getCookie, setCookie } from "cookies-next";
 
 const index = () => {
   const dispatch = useDispatch();
-  const publicSlice = useSelector((state) => state.publicData);
 
   const userID = getCookie('userID');
   const [data, setData] = useState([]);

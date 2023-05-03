@@ -4,9 +4,6 @@ import React, { useState } from "react";
 const NewClass = () => {
   const token = getCookie('token')
   const userID = getCookie('userID');
-  const firstname = getCookie('firstname')
-  const lastname = getCookie('lastname')
-  const nickname = getCookie('username')
   const [subject_name, setSubject_name] = useState("")
   const [tag, setTag] = useState("")
   const [section, setSection] = useState("")
