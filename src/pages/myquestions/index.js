@@ -7,7 +7,7 @@ import React , {useEffect, useState} from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuestions, setToken } from "@/redux/slices/publicSlice";
-import { getCookie, hasCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 
 const index = () => {
   const dispatch = useDispatch();
@@ -46,8 +46,8 @@ const index = () => {
             <ToggleNav />
           </div>
           <div className="pt-5">{data.map((items) => (
-            <Link key={items.ID} href={"/home/question"} onClick={()=>{dispatch(setQuestions(items))}}>
-              <Blockpost username = {items.username} dateTime = {items.created_at} titleQuestion = {items.Content} classTag = {items.classTag} comment = {items.comment}/>
+            <Link key={items.ID} href={"/home/question"} onClick={()=>{dispatch(setQuestions(items)), setCookie('questionId', items.ID)}}>
+              <Blockpost username = {items.username} dateTime = {items.created_at} titleQuestion = {items.Content} classTag = {items.classTag} comment = {items.answer === null ? '0' : items.answer.length}/>
             </Link>
           ))}</div>
         </div>
