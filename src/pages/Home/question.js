@@ -25,6 +25,24 @@ const question = () => {
   useEffect(() => {
     getAnswer();
   }, []);
+  if (!data)
+    return (
+      <Layout>
+        <p className="text-white text-center text-2xl">No class data</p>
+        <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
+          <Questionblock
+            username={publicSlice.questions.username}
+            dateTime={publicSlice.questions.created_at}
+            titleQuestion={publicSlice.questions.Content}
+            questionDetail={""}
+            classTag={publicSlice.questions.classTagContent}
+          />
+          <div className="pt-5 w-full">
+            <Typeanswer />
+          </div>
+        </div>
+      </Layout>
+    );
   return (
     <>
       <Layout>
@@ -43,7 +61,7 @@ const question = () => {
             <div className="pt-5 m-auto w-full">
               {data.map((items) => (
                 <Answerblock
-                  username={items.username}
+                  username={items.owner_name}
                   dateTime={items.created_at}
                   answer={items.content}
                 />

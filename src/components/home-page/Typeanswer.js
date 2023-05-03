@@ -9,6 +9,7 @@ const Typeanswer = () => {
   const [iconColor, setIconColor] = useState("white");
   const publicSlice = useSelector((state) => state.publicData);
   const token = getCookie('token')
+  const username = getCookie('username')
   const [answer, setAnswer] = useState("")
   const requestOptions = {
     method: 'POST',
@@ -16,10 +17,12 @@ const Typeanswer = () => {
     body: JSON.stringify({
         "content": answer,
         "owner": "643533058b6dc87dc5c10272",
+        "owner_name": username 
     })
   };
   const postAnswer = async () => {
-    await fetch('http://localhost:8080/api/v2/classrooms/questions/'+publicSlice.questions.ID+'/answers', requestOptions)
+    const questionId = getCookie("questionId");
+    await fetch('http://localhost:8080/api/v2/classrooms/questions/'+questionId+'/answers', requestOptions)
       .then(response => {
           response.json()
               .then(data => {

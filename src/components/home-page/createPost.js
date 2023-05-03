@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { getCookie } from "cookies-next";
 
-const CreatePost = () => {
+const CreatePost = ({classID}) => {
   const [isOpen, setIsOpen] = useState(false);
   const token = getCookie('token')
   const togglemodal = () => {
@@ -12,6 +12,7 @@ const CreatePost = () => {
   };
   const currentdate = new Date()
   const userID = getCookie('userID');
+  const username = getCookie('username')
   const [content ,setContent] =useState("");
   const requestOptions = {
     method: 'POST',
@@ -19,10 +20,11 @@ const CreatePost = () => {
     body: JSON.stringify({
         "content": content,
         "owner": userID,
+        "owner_name": username
     })
   };
   const post = async () => {
-    await fetch('http://localhost:8080/api/v2/classrooms/'+'64382dfd372ebb119941f8a9'+'/questions', requestOptions)
+    await fetch('http://localhost:8080/api/v2/classrooms/'+classID+'/questions', requestOptions)
       .then(response => {
           response.json()
               .then(data => {
@@ -69,7 +71,7 @@ const CreatePost = () => {
                     width={40}
                     height={40}
                   />
-                  <p className="mx-3">Username</p>
+                  <p className="mx-3">{username}</p>
                   <p>{currentdate.toLocaleString()}</p>
                 </div>
 

@@ -32,10 +32,14 @@ const index = () => {
                         if (data.token == null || data.token == undefined || data.token == " ") {
 
                         } else {
+                            console.log(data)
                             setCookie('token', data.token)
                             console.log(data.token)
                             console.log("Set Cookie!")     
-                            setCookie('userID', data.user_id)         
+                            setCookie('userID', data.user_id)   
+                            setCookie('firstname', data.first_name)
+                            setCookie('lastname', data.last_name)     
+                            setCookie('username', data.nick_name)           
                             router.push('/')
                         }
                     });

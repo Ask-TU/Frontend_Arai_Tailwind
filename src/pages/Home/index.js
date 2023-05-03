@@ -17,7 +17,7 @@ const index = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "/api/fetchAllQuestion/" + "64526c8f153bd2afd7470d13"
+        "/api/fetchAllQuestion/" + "64528b14145c12b8430c55e0"
       );
       const json = await response.json();
       setData(json.result.data);
@@ -37,6 +37,16 @@ const index = () => {
     return (
       <Layout>
         <p className="text-white text-center text-2xl">No class data</p>
+        <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
+          <div className="flex">
+            <Search />
+            <ToggleNav />
+          </div>
+          <div className="border-b border-636363 pb-5 m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
+            <CreatePost classID={"64528b14145c12b8430c55e0"}/>
+          </div>
+        </div>
+
       </Layout>
     );
   if (isLoading) return <p>Loading...</p>;
@@ -63,10 +73,10 @@ const index = () => {
                 }}
               >
                 <Blockpost
-                  username={items.username}
+                  username={items.owner_name}
                   dateTime={items.created_at}
                   titleQuestion={items.Content}
-                  classTag={items.classTag}
+                  classTag={items.tag}
                   comment={items.answer === null ? "0" : items.answer.length}
                 />
               </Link>

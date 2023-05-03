@@ -4,10 +4,21 @@ import React, { useState } from "react";
 const NewClass = () => {
   const token = getCookie('token')
   const userID = getCookie('userID');
+  const firstname = getCookie('firstname')
+  const lastname = getCookie('lastname')
+  const nickname = getCookie('username')
   const [subject_name, setSubject_name] = useState("")
   const [tag, setTag] = useState("")
   const [section, setSection] = useState("")
   const [description, setDescription] = useState("")
+  const [classID, setClassID] = useState("")
+  async function sleep(msec) {
+    return new Promise(resolve => setTimeout(resolve, msec));
+  }
+  const requestOptionsUpdateuser = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
+  };
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
@@ -17,21 +28,25 @@ const NewClass = () => {
         "tag": tag,
         "section": section,
         "description": description,
-        "members":[userID],
     })
   };
   const createClass = async () => {
-    await fetch('http://localhost:8080/api/v2/classrooms', requestOptions)
-      .then(response => {
-          response.json()
-              .then(data => {
-                console.log(data)
-              });
-      })
-      .catch(error => {
-          console.error(error);
-      })
-    setIsOpen(!isOpen);
+    try {
+      const response = await fetch('http://localhost:8080/api/v2/classrooms', requestOptions)
+      const json = await response.json()
+      console.log(json)
+      console.log(json.result.data.ID)
+      setClassID(json.result.data.ID)
+      console.log(classID)
+      await sleep(1000)
+      const join =  await fetch('http://localhost:8080/api/v2/classrooms/join/' + json.result.data.ID + '/' + userID, requestOptionsUpdateuser)
+      const toJson = join.json()
+      console.log(toJson)
+      setIsOpen(!isOpen);
+    } catch (err) {
+      console.log(err)
+    }
+
   }
   const [isOpen, setIsOpen] = useState(false);
   const togglemodal = () => {
