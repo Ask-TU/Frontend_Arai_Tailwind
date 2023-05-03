@@ -45,7 +45,25 @@ const NewClass = () => {
                     mb-3"
                     placeholder="Class Name"
                     type="text"
-                    name="search"
+                    name="text"
+                  />
+                </label>
+
+                <label className="flex w-full">
+                  <input
+                    className="placeholder:font-bold 
+                    placeholder:text-slate-400 
+                    placeholder:text-sm block 
+                    bg-636363 w-full rounded-lg py-2 px-4 shadow-sm 
+                    focus:outline-none 
+                    focus:border-sky-500 
+                    focus:ring-sky-500 
+                    focus:ring-1 
+                    sm:text-sm
+                    mb-3"
+                    placeholder="Class Tag"
+                    type="text"
+                    name="text"
                   />
                 </label>
 
@@ -63,7 +81,7 @@ const NewClass = () => {
                     mb-3"
                     placeholder="Sec"
                     type="text"
-                    name="search"
+                    name="text"
                   />
                 </label>
 
@@ -79,7 +97,7 @@ const NewClass = () => {
                     className="placeholder:font-bold placeholder:text-slate-400 block bg-636363 w-full rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm h-28 resize-y"
                     placeholder="Description"
                     type="text"
-                    name="search"
+                    name="text"
                   />
                 </label>
 
