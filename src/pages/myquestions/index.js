@@ -8,7 +8,6 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { setQuestions, setToken } from "@/redux/slices/publicSlice";
 import { getCookie, hasCookie } from "cookies-next";
-import axios from "axios";
 
 const index = () => {
   const dispatch = useDispatch();
@@ -80,17 +79,6 @@ const index = () => {
           <div className="border-b border-636363 pb-5">
             <CreatePost />
           </div>
-          {/* <div className="pt-5">
-            {BlockPostData.map((items) => (
-              <Link key={items.titleQuestion} href={"/home/question"} onClick={()=>{dispatch(setQuestions(items)); console.log(publicSlice.questions); console.log(publicSlice.questions.username)}}>
-                <Blockpost username = {items.username} dateTime = {items.dateTime} titleQuestion = {items.titleQuestion} classTag = {items.classTag} comment = {items.comment}/>
-              </Link>
-            ))}
-          </div> */}
-          {/* <button onClick={()=>getAllClass()} className="text-white">Test Get Class Data</button> */}
-          {/* <div className="text-white">
-            {data && data.map(da => <div>{da.result.data.Content}</div>)}
-          </div> */}
           <div className="pt-5">{data.map((items) => (
             <Link key={items.ID} href={"/home/question"} onClick={()=>{dispatch(setQuestions(items))}}>
               <Blockpost username = {items.username} dateTime = {items.created_at} titleQuestion = {items.Content} classTag = {items.classTag} comment = {items.comment}/>
