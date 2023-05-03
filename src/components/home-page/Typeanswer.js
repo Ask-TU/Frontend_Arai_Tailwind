@@ -21,17 +21,15 @@ const Typeanswer = () => {
     })
   };
   const postAnswer = async () => {
-    const questionId = getCookie("questionId");
-    await fetch('http://localhost:8080/api/v2/classrooms/questions/'+questionId+'/answers', requestOptions)
-      .then(response => {
-          response.json()
-              .then(data => {
-                console.log(data)
-              });
-      })
-      .catch(error => {
-          console.error(error);
-      })
+    try {
+      const questionId = getCookie("questionId");
+      const response = await fetch('http://localhost:8080/api/v2/classrooms/questions/'+questionId+'/answers', requestOptions);
+      const json = response.json();
+      console.log(json);
+    } catch(err) {
+      console.log(err);
+    }
+    
   }
   return (
     <div className="flex m-auto text-white p-4 rounded-lg bg-242527">

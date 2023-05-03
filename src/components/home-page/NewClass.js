@@ -32,19 +32,19 @@ const NewClass = () => {
   };
   const createClass = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v2/classrooms', requestOptions)
-      const json = await response.json()
-      console.log(json)
-      console.log(json.result.data.ID)
-      setClassID(json.result.data.ID)
-      console.log(classID)
-      await sleep(1000)
-      const join =  await fetch('http://localhost:8080/api/v2/classrooms/join/' + json.result.data.ID + '/' + userID, requestOptionsUpdateuser)
-      const toJson = join.json()
-      console.log(toJson)
+      const response = await fetch('http://localhost:8080/api/v2/classrooms', requestOptions);
+      const json = await response.json();
+      console.log(json);
+      console.log(json.result.data.ID);
+      setClassID(json.result.data.ID);
+      console.log(classID);
+      await sleep(1000);
+      const join =  await fetch('http://localhost:8080/api/v2/classrooms/join/' + json.result.data.ID + '/' + userID, requestOptionsUpdateuser);
+      const toJson = join.json();
+      console.log(toJson);
       setIsOpen(!isOpen);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
 
   }

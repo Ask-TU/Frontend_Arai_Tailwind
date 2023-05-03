@@ -12,7 +12,7 @@ const CreatePost = ({classID}) => {
   };
   const currentdate = new Date()
   const userID = getCookie('userID');
-  const username = getCookie('username')
+  const username = getCookie('username');
   const [content ,setContent] =useState("");
   const requestOptions = {
     method: 'POST',
@@ -24,17 +24,15 @@ const CreatePost = ({classID}) => {
     })
   };
   const post = async () => {
-    await fetch('http://localhost:8080/api/v2/classrooms/'+classID+'/questions', requestOptions)
-      .then(response => {
-          response.json()
-              .then(data => {
-                console.log(data)
-              });
-      })
-      .catch(error => {
-          console.error(error);
-      })
-    setIsOpen(!isOpen);
+    try {
+      const response = await fetch('http://localhost:8080/api/v2/classrooms/'+classID+'/questions', requestOptions);
+      const json = response.json();
+      console.log(json);
+      setIsOpen(!isOpen); 
+    } catch (err) {
+      console.log(err);
+    }
+
   }
 
   return (

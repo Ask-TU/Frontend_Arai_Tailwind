@@ -23,31 +23,26 @@ const index = () => {
             "password": pass,
         })
     };
-
     const postLogin = async () => {
-        await fetch('http://localhost:8080/auth/login', requestOptions)
-            .then(response => {
-                response.json()
-                    .then(data => {
-                        if (data.token == null || data.token == undefined || data.token == " ") {
-
-                        } else {
-                            console.log(data)
-                            setCookie('token', data.token)
-                            console.log(data.token)
-                            console.log("Set Cookie!")     
-                            setCookie('userID', data.user_id)   
-                            setCookie('firstname', data.first_name)
-                            setCookie('lastname', data.last_name)     
-                            setCookie('username', data.nick_name)           
-                            router.push('/')
-                        }
-                    });
-            })
-            .catch(error => {
-                dispath(setAuthState(false))
-                console.error(error);
-            })
+        try {
+            const response = await fetch('http://localhost:8080/auth/login', requestOptions);
+            const json = await response.json();
+            if (json.token == null || json.token == undefined || json.token == " ") {
+                console.log()
+            } else {
+                console.log(data);
+                setCookie('token', data.token);
+                console.log(data.token);
+                console.log("Set Cookie!");     
+                setCookie('userID', data.user_id);   
+                setCookie('firstname', data.first_name);
+                setCookie('lastname', data.last_name);     
+                setCookie('username', data.nick_name);           
+                router.push('/');
+            }   
+        } catch(err) {
+            console.log(err)
+        }
     }
     //function loading
     const [isLoading, setLoading] = useState(false);
