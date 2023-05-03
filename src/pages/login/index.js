@@ -27,16 +27,17 @@ const index = () => {
             if (json.token == null || json.token == undefined || json.token == " ") {
                 console.log()
             } else {
-                console.log(data);
-                setCookie('token', data.token);
-                console.log(data.token);
+                console.log(json);
+                setCookie('token', json.token);
+                console.log(json.token);
                 console.log("Set Cookie!");     
-                setCookie('userID', data.user_id);   
-                setCookie('firstname', data.first_name);
-                setCookie('lastname', data.last_name);     
-                setCookie('username', data.nick_name);           
+                setCookie('userID', json.user_id);   
+                setCookie('firstname', json.first_name);
+                setCookie('lastname', json.last_name);     
+                setCookie('username', json.nick_name);           
                 router.push('/');
-            }   
+            } 
+             
         } catch(err) {
             console.log(err)
         }
