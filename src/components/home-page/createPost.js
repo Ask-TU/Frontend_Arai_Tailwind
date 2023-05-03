@@ -11,17 +11,18 @@ const CreatePost = () => {
     setIsOpen(!isOpen);
   };
   const currentdate = new Date()
+  const userID = getCookie('userID');
   const [content ,setContent] =useState("");
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
     body: JSON.stringify({
         "content": content,
-        "owner": "643533058b6dc87dc5c10272",
+        "owner": userID,
     })
   };
   const post = async () => {
-    await fetch('http://localhost:8080/api/v2/classrooms/'+'643bfd04e7211dc61a4e23ba'+'/questions', requestOptions)
+    await fetch('http://localhost:8080/api/v2/classrooms/'+'64382dfd372ebb119941f8a9'+'/questions', requestOptions)
       .then(response => {
           response.json()
               .then(data => {

@@ -30,28 +30,14 @@ const index = () => {
                 response.json()
                     .then(data => {
                         if (data.token == null || data.token == undefined || data.token == " ") {
-                            // setCookie('token', data.token);
-                            // console.log(data.token) 
-                            // console.log("Set Cookie!")
-                        } else {
-                            setCookie('token', data.token);
-                            console.log(data.token)
-                            console.log("Set Cookie!")
-                            // dispath(setToken(data.token))
-                            // console.log(token)                    
-                            setPath('/api/getAllClass/' + data.token)
-                            getAllClass().then(() => console.log("Fetch Class!"))
 
+                        } else {
+                            setCookie('token', data.token)
+                            console.log(data.token)
+                            console.log("Set Cookie!")     
+                            setCookie('userID', data.user_id)         
                             router.push('/')
                         }
-                        console.log(data)
-                        console.log(data.first_name)
-                        console.log(data.last_name)
-                        console.log(data.nick_name)
-                        console.log(data.phone)
-                        console.log(data.classrooms)
-                        console.log("Email = " + email)
-                        console.log("Password = " + pass)
                     });
             })
             .catch(error => {
@@ -65,27 +51,12 @@ const index = () => {
     useEffect(() => {
         if (isLoading) {
             postLogin().then(() => {
-                getAllClass();
                 setLoading(false);
             });
         }
     }, [isLoading]);
 
     const handleClick = () => { setLoading(true) };
-
-    const [path, setPath] = useState("");
-    const getAllClass = async () => {
-        await fetch(path, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
-            .then((res) => res.json())
-            .then((d) => {
-                dispath(setData(d.class_items));
-                console.log(d);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
 
     return (
         <>

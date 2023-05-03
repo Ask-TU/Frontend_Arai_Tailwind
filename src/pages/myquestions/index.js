@@ -13,14 +13,14 @@ const index = () => {
   const dispatch = useDispatch();
   const publicSlice = useSelector((state) => state.publicData);
 
-  const token = getCookie('token');
+  const userID = getCookie('userID');
   const [data, setData] = useState([]);
 
   const [isLoading, setLoading] = useState(true);    
   const getQuestion = async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/questionByUserId/' + '643bfd04e7211dc61a4e23ba')
+      const response = await fetch('/api/questionByUserId/' + userID)
       const json = await response.json()
       setData(json.result.data)
       console.log(json.result.data)
@@ -35,7 +35,7 @@ const index = () => {
     getQuestion();
   }, []);
 
-  if (!data) return <Layout><p className="text-white">No class data</p></Layout>
+  if (!data) return <Layout><p className="text-white">No data</p></Layout>
   if (isLoading) return <p>Loading...</p>
   return (
     <Layout>
