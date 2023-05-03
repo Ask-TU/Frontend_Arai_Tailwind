@@ -90,10 +90,13 @@ const Navbar = () => {
             <p className="ml-2">Home</p>
           </button>
         </Link>
-        <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
-          <FaUserCircle />
-          <p className="ml-2">My question</p>
-        </button>
+        <Link href={"/myquestions"}>
+          <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
+            <FaUserCircle />
+            <p className="ml-2">My question</p>
+          </button>
+        </Link>
+
         <button className="flex justify-start items-center p-2 rounded-lg hover:bg-08D9D6">
           <BsFillBookmarkFill />
           <p className="ml-2">Book</p>
@@ -148,7 +151,7 @@ const ToggleNav = () => {
             </button>
           </Link>
           <Link
-            href="#"
+            href="/myquestions"
             className="flex items-center p-2 text-sm rounded-lg text-white hover:bg-08D9D6"
             onClick={() => toggledropdown()}
           >

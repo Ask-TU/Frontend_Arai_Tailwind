@@ -26,7 +26,8 @@ export const requests = (params) => {
         fetchAllClass: `${BASE_URL}/api/v2/classrooms`,
         fetchClassbyID: `${BASE_URL}/api/v2/classrooms/${params}`,
         fetchAllQuestion: `${BASE_URL}/api/v2/classrooms/${params}/questions`,
-
+        fetchAnswerById: `${BASE_URL}/api/v2/classrooms/questions/${params}/answers`,
+        fetchQuestionByUserId: `${BASE_URL}/api/v2/classrooms/questions/${params}`
     }
 
 }

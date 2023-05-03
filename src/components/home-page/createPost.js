@@ -1,27 +1,53 @@
 import Image from "next/image";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
 import React, { useState } from "react";
+import axios from "axios";
+import { getCookie } from "cookies-next";
 
 const CreatePost = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const token = getCookie('token')
   const togglemodal = () => {
     setIsOpen(!isOpen);
   };
+  const currentdate = new Date()
+  const [content ,setContent] =useState("");
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
+    body: JSON.stringify({
+        "content": content,
+        "owner": "643533058b6dc87dc5c10272",
+    })
+  };
+  const post = async () => {
+    await fetch('http://localhost:8080/api/v2/classrooms/'+'643bfd04e7211dc61a4e23ba'+'/questions', requestOptions)
+      .then(response => {
+          response.json()
+              .then(data => {
+                console.log(data)
+              });
+      })
+      .catch(error => {
+          console.error(error);
+      })
+    setIsOpen(!isOpen);
+  }
 
   return (
     <div className="bg-242527 flex items-center rounded-lg px-4 h-36 my-5 overflow-hidden">
       <Image src={ProfileImg} alt="Profile icon" width={40} height={40} />
       <button
         className="
-      flex 
-      justify-start 
-      bg-3D3D3D 
-      text-white 
-      text-sm 
-      rounded-full 
-      py-2 px-5 mx-4 
-      w-full 
-      hover:bg-828282"
+        flex 
+        justify-start 
+        bg-3D3D3D 
+        text-white 
+        text-sm 
+        rounded-full 
+        py-2 px-5 mx-4 
+        w-full 
+        hover:bg-828282"
         onClick={() => togglemodal()}
       >
         Have any question?
@@ -43,7 +69,7 @@ const CreatePost = () => {
                     height={40}
                   />
                   <p className="mx-3">Username</p>
-                  <p>14 Feb 2023, 21:29</p>
+                  <p>{currentdate.toLocaleString()}</p>
                 </div>
 
                 <label className="flex w-full">
@@ -52,6 +78,7 @@ const CreatePost = () => {
                     placeholder="Question Title"
                     type="text"
                     name="search"
+                    onChange={(e) => setContent(e.target.value)}
                   />
                 </label>
 
@@ -78,7 +105,7 @@ const CreatePost = () => {
                 <div className="flex justify-center">
                   <button
                     className="text-white text-lg bg-08D9D6 w-fit py-1 px-4 rounded-lg mt-3"
-                    onClick={() => togglemodal()}
+                    onClick={() => post()}
                   >
                     Post
                   </button>

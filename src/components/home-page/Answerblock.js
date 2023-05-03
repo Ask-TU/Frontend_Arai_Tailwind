@@ -8,7 +8,7 @@ const username = "Username";
 const dateTime = "14 Feb 2023, 21:29";
 const answer = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 const like = "0";
-const Answerblock = () => {
+const Answerblock = ({username, dateTime, answer}) => {
   const [iconColor, setIconColor] = useState("white");
   const [like, setLike] = useState("0");
   const handleIconClick = () => {

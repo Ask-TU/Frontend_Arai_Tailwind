@@ -12,45 +12,15 @@ import { getCookie, hasCookie } from "cookies-next";
 const index = () => {
   const dispatch = useDispatch();
   const publicSlice = useSelector((state) => state.publicData);
-  const BlockPostData = [
-    {
-      username: "Username",
-      dateTime: "14 Feb 2023, 21:29", 
-      titleQuestion: "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ แล้วถ้าฝนตากผม ผมจะเปียกมั้ย", 
-      classTag: "SF 340", 
-      comment: 2
-    },
-    {
-      username: "Chawin",
-      dateTime: "14 Feb 2023, 21:29", 
-      titleQuestion: "ฝนจะแห้งมั้ยครับ แล้วถ้าฝนตากผม ผมจะเปียกมั้ย", 
-      classTag: "SF 341", 
-      comment: 2
-    },
-    {
-      username: "Thank",
-      dateTime: "14 Feb 2023, 21:29", 
-      titleQuestion: "ถ้าผมตากฝน แล้วถ้าฝนตากผม ผมจะเปียกมั้ย", 
-      classTag: "SF 340", 
-      comment: 2
-    },
-    {
-      username: "Test",
-      dateTime: "14 Feb 2023, 21:29", 
-      titleQuestion: "ถ้าผมตากฝน ฝนจะแห้งมั้ยครับ ผมจะเปียกมั้ย", 
-      classTag: "SF 340", 
-      comment: 2
-    }
-  ]
 
   const token = getCookie('token');
   const [data, setData] = useState([]);
 
   const [isLoading, setLoading] = useState(true);    
-  const getAllClass = async () => {
+  const getQuestion = async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/fetchAllQuestion/' + '643bfd04e7211dc61a4e23ba')
+      const response = await fetch('/api/questionByUserId/' + '643bfd04e7211dc61a4e23ba')
       const json = await response.json()
       setData(json.result.data)
       console.log(json.result.data)
@@ -62,8 +32,7 @@ const index = () => {
     }
   }
   useEffect(() => {  
-
-    getAllClass();
+    getQuestion();
   }, []);
 
   if (!data) return <Layout><p className="text-white">No class data</p></Layout>
@@ -75,9 +44,6 @@ const index = () => {
           <div className="flex">
             <Search />
             <ToggleNav />
-          </div>
-          <div className="border-b border-636363 pb-5">
-            <CreatePost />
           </div>
           <div className="pt-5">{data.map((items) => (
             <Link key={items.ID} href={"/home/question"} onClick={()=>{dispatch(setQuestions(items))}}>
