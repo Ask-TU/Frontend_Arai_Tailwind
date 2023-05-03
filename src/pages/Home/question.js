@@ -31,11 +31,11 @@ const question = () => {
         <p className="text-white text-center text-2xl">No class data</p>
         <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
           <Questionblock
-            username={publicSlice.questions.username}
+            username={publicSlice.questions.owner_name}
             dateTime={publicSlice.questions.created_at}
             titleQuestion={publicSlice.questions.Content}
             questionDetail={""}
-            classTag={publicSlice.questions.classTagContent}
+            classTag={publicSlice.questions.tag}
           />
           <div className="pt-5 w-full">
             <Typeanswer />
@@ -49,11 +49,11 @@ const question = () => {
         <div className="m-8">
           <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
             <Questionblock
-              username={publicSlice.questions.username}
+              username={publicSlice.questions.owner_name}
               dateTime={publicSlice.questions.created_at}
               titleQuestion={publicSlice.questions.Content}
               questionDetail={""}
-              classTag={publicSlice.questions.classTagContent}
+              classTag={publicSlice.questions.tag}
             />
             <div className="pt-5 w-full">
               <Typeanswer />

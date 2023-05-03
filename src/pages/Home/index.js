@@ -16,9 +16,7 @@ const index = () => {
   const getAllClass = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
-        "/api/fetchAllQuestion/" + "64528b14145c12b8430c55e0"
-      );
+      const response = await fetch("/api/fetchAllQuestion/" + "64528e1a12255bcb154b7cf8");
       const json = await response.json();
       setData(json.result.data);
       console.log(json.result.data);
@@ -43,7 +41,7 @@ const index = () => {
             <ToggleNav />
           </div>
           <div className="border-b border-636363 pb-5 m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
-            <CreatePost classID={"64528b14145c12b8430c55e0"}/>
+            <CreatePost classID={"64528e1a12255bcb154b7cf8"}/>
           </div>
         </div>
 
