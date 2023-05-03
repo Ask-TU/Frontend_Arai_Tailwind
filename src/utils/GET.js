@@ -1,35 +1,32 @@
-import { TOKEN, BASE_URL } from '@/utils/index';
+import { TOKEN, BASE_URL } from "@/utils/index";
 
 export const options = (body) => {
-    return {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'token': TOKEN ?? ''
-        }
-    }
-}
+  return {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      token: TOKEN ?? "",
+    },
+  };
+};
 export const optionswithBody = (body) => {
-    return {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'token': TOKEN ?? ''
-        },
-        body: JSON.stringify(body)
-    }
-}
+  return {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      token: TOKEN ?? "",
+    },
+    body: JSON.stringify(body),
+  };
+};
 
 export const requests = (params) => {
-
-    return {
-        fetchAllClass: `${BASE_URL}/api/v2/classrooms`,
-        fetchClassbyID: `${BASE_URL}/api/v2/classrooms/${params}`,
-        fetchAllQuestion: `${BASE_URL}/api/v2/classrooms/${params}/questions`,
-        fetchAnswerById: `${BASE_URL}/api/v2/classrooms/questions/${params}/answers`,
-        fetchQuestionByUserId: `${BASE_URL}/api/v2/classrooms/questions/${params}`
-    }
-
-}
-
-
+  return {
+    fetchAllClass: `${BASE_URL}/api/v2/classrooms`,
+    fetchClassbyID: `${BASE_URL}/api/v2/classrooms/${params}`,
+    fetchAllQuestion: `${BASE_URL}/api/v2/classrooms/${params}/questions`,
+    fetchAnswerById: `${BASE_URL}/api/v2/classrooms/questions/${params}/answers`,
+    fetchQuestionByUserId: `${BASE_URL}/api/v2/classrooms/questions/${params}`,
+    fetchUserByID: `${BASE_URL}/users/${params}`,
+  };
+};
