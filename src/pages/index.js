@@ -1,6 +1,6 @@
 import { hasCookie } from 'cookies-next';
 import Login from "./login";
-import Home from "./Home";
+import Home from "./home";
 
 export default function App() {
   const token = hasCookie('token');
