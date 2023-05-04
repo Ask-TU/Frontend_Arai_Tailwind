@@ -17,8 +17,6 @@ const index = () => {
 
           <div className="pt-5">
             <ResultBlock />
-            <ResultBlock />
-            <ResultBlock />
           </div>
         </div>
       </div>

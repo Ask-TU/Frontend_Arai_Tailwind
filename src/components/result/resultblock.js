@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
+import { useSelector } from "react-redux";
+import { getCookie } from "cookies-next";
 
 const ResultBlock = () => {
+  const publicSlice = useSelector((state) => state.publicData);
   const [iconColor, setIconColor] = useState("white");
-
+  const token = getCookie('token')
+  const userID = getCookie('userID');
   const [owner, setOwner] = useState("Dr.Arai");
   const [className, setClassName] = useState("SF 340");
   const [sec, setSec] = useState("760001");
   const [des, setDes] = useState(
     "Software Configuration Management and Maintenance (Wed 12:30)"
   );
+  useEffect(() => {
+    // setOwner(publicSlice.searchResult.class_owner);
+    setClassName(publicSlice.searchResult.subject_name);
+    setSec(publicSlice.searchResult.section);
+    setDes(publicSlice.searchResult.description);
+  }, []);
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
+  };
+  const joinClass = async () => {
+    const join =  await fetch('http://localhost:8080/api/v2/classrooms/join/' + publicSlice.searchResult.ID + '/' + userID, requestOptions);
+    const toJson = await join.json();
+    console.log(toJson);
+  }
 
   return (
     <div className="relative bg-242527 flex flex-col w-full my-5 rounded-lg text-white p-4">
@@ -34,6 +53,7 @@ const ResultBlock = () => {
           className="
         absolute bottom-3 right-4
         bg-AEC64E rounded-md py-1 px-3"
+        onClick={()=>joinClass()}
         >
           Join Class
         </button>

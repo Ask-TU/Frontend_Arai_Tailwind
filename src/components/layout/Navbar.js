@@ -9,18 +9,18 @@ import { getCookie } from "cookies-next";
 
 const Navbar = () => {
   const userID = getCookie("userID");
-  const [userData, setUserData] = useState();
-  const getUserbyID = async () => {
-    await axios.get("api/fetchUserByID/" + userID).then((res) => {
-      setUserData(res.data);
-      console.log(res.data);
-    });
-  };
+  // const [userData, setUserData] = useState();
+  // const getUserbyID = async () => {
+  //   await axios.get("api/fetchUserByID/" + userID).then((res) => {
+  //     setUserData(res.data);
+  //     console.log(res.data);
+  //   });
+  // };
 
-  useEffect(() => {
-    getUserbyID();
-    console.log(userID);
-  }, []);
+  // useEffect(() => {
+  //   getUserbyID();
+  //   console.log(userID);
+  // }, []);
 
   return (
     <nav className="fixed left-10 z-10">
@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="relative flex flex-col bg-242527 text-white rounded-lg my-5 p-3 w-48">
         <p className="absolute top-3 left-5 text-sm">Class</p>
         <div className="mt-6 flex flex-col">
-          {!userData ? (
+          {/* {!userData ? (
             <p>No class added</p>
           ) : (
             userData.classrooms_id.map((item) => {
@@ -68,7 +68,7 @@ const Navbar = () => {
                 </Link>
               );
             })
-          )}
+          )} */}
         </div>
       </div>
       <div className="flex justify-center">
