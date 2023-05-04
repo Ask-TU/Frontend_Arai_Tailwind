@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ProfileImg from "../../../public/assets/Ellipse 7.png";
 import { BsFillSendFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
 import { getCookie } from "cookies-next";
 
 const Typeanswer = () => {
   const [iconColor, setIconColor] = useState("white");
-  const publicSlice = useSelector((state) => state.publicData);
+  const userID = getCookie('userID');
   const token = getCookie('token')
   const username = getCookie('username')
   const [answer, setAnswer] = useState("")
@@ -16,7 +15,7 @@ const Typeanswer = () => {
     headers: { 'Content-Type': 'application/json', 'token': token ?? '' },
     body: JSON.stringify({
         "content": answer,
-        "owner": "643533058b6dc87dc5c10272",
+        "owner": userID,
         "owner_name": username 
     })
   };
