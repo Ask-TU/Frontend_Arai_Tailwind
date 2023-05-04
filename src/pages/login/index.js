@@ -34,7 +34,9 @@ const index = () => {
                 setCookie('userID', json.user_id);   
                 setCookie('firstname', json.first_name);
                 setCookie('lastname', json.last_name);     
-                setCookie('username', json.nick_name);           
+                setCookie('username', json.nick_name);  
+                setCookie('classID', "6453479a1b376c2859e307c6")  
+                setCookie('classTag', "SF333")       
                 router.push('/');
             } 
              

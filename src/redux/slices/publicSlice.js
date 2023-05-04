@@ -7,7 +7,8 @@ const initialValue = {
   token: "",
   data: null,
   searchResult: {},
-  search: ""
+  search: "",
+  classID: ""
 };
 
 const publicSlice = createSlice({
@@ -38,10 +39,13 @@ const publicSlice = createSlice({
     setSearch: (state, action) => {
       state.search = action.payload;
     },
+    setClassID: (state, action) => {
+      state.classID = action.payload;
+    },
   },
   extraReducers: (builder) => {},
 });
 
-export const { setQuestions, setLoading, setAuthState, setToken, setData, setSearchResult, setSearch } =
+export const { setQuestions, setLoading, setAuthState, setToken, setData, setSearchResult, setSearch, setClassID } =
   publicSlice.actions;
 export default publicSlice.reducer;

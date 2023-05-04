@@ -9,7 +9,7 @@ const ResultBlock = () => {
   const [iconColor, setIconColor] = useState("white");
   const token = getCookie('token')
   const userID = getCookie('userID');
-  const [owner, setOwner] = useState("Dr.Arai");
+  const [owner, setOwner] = useState("chawin");
   const [className, setClassName] = useState("SF 340");
   const [sec, setSec] = useState("760001");
   const [des, setDes] = useState(
@@ -44,7 +44,7 @@ const ResultBlock = () => {
           <text className="text-FF4E4E font-bold text-xl mr-4 ">
             {className}
           </text>
-          <div className="bg-3A3B3D w-fit p-1 pr-10 rounded-md text-sm h-fit">
+          <div className="bg-3A3B3D p-1 rounded-md text-sm h-fit">
             {sec}
           </div>
         </div>

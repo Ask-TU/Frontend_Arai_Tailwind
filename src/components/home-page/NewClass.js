@@ -1,4 +1,4 @@
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import React, { useState } from "react";
 
 const NewClass = () => {
@@ -8,7 +8,7 @@ const NewClass = () => {
   const [tag, setTag] = useState("")
   const [section, setSection] = useState("")
   const [description, setDescription] = useState("")
-  const [classID, setClassID] = useState("")
+
   async function sleep(msec) {
     return new Promise(resolve => setTimeout(resolve, msec));
   }
@@ -33,8 +33,8 @@ const NewClass = () => {
       const json = await response.json();
       console.log(json);
       console.log(json.result.data.ID);
-      setClassID(json.result.data.ID);
-      console.log(classID);
+      setCookie('classID', json.result.data.ID);
+      setCookie('classTag', json.result.data.tag);
       await sleep(1000);
       const join =  await fetch('http://localhost:8080/api/v2/classrooms/join/' + json.result.data.ID + '/' + userID, requestOptionsUpdateuser);
       const toJson = join.json();

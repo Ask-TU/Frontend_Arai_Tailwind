@@ -7,13 +7,14 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { setQuestions } from "@/redux/slices/publicSlice";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 
 const index = () => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const classID = "6452a336612cf493afe90b30"
+  const classID = getCookie('classID');
+  const classTag = getCookie('classTag');
   const getAllClass = async () => {
     try {
       setLoading(true);
@@ -35,15 +36,17 @@ const index = () => {
   if (!data)
     return (
       <Layout>
-        <p className="text-white text-center text-2xl">No data</p>
-        <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
+        <div className="m-8">
+          <div className="m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
           <div className="flex">
-            <Search />
-            <ToggleNav />
+              <Search />
+              <ToggleNav />
           </div>
           <div className="border-b border-636363 pb-5 m-auto max-w-xl lg:max-w-2xl 2xl:max-w-5xl">
-            <CreatePost classID={classID}/>
+              <CreatePost classID={classID} tag={classTag}/>
           </div>
+          </div>
+          <p className="text-white text-center text-2xl">No data</p>
         </div>
       </Layout>
     );
@@ -57,7 +60,7 @@ const index = () => {
             <ToggleNav />
           </div>
           <div className="border-b border-636363 pb-5">
-            <CreatePost classID={classID}/>
+            <CreatePost classID={classID} tag={classTag}/>
           </div>
           <div className="pt-5">
             {data.map((items) => (

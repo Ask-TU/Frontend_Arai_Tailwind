@@ -3,9 +3,9 @@ import ProfileImg from "../../../public/assets/Ellipse 7.png";
 import React, { useState } from "react";
 import { getCookie } from "cookies-next";
 
-const CreatePost = ({classID}) => {
+const CreatePost = ({classID="", tag=""}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const token = getCookie('token')
+  const token = getCookie('token');
   const togglemodal = () => {
     setIsOpen(!isOpen);
   };
@@ -19,7 +19,8 @@ const CreatePost = ({classID}) => {
     body: JSON.stringify({
         "content": content,
         "owner": userID,
-        "owner_name": username
+        "owner_name": username,
+        "tag": tag
     })
   };
   const post = async () => {
@@ -83,7 +84,7 @@ const CreatePost = ({classID}) => {
                 </label>
 
                 <button className="my-3 bg-FF7171 rounded-lg w-fit">
-                  <p className="text-sm p-1">Class Name</p>
+                  <p className="text-sm p-1">{tag}</p>
                 </button>
 
                 <label className="flex w-full">
